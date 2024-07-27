@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.c6912e23.css",
-    "main.js": "/react-gh-pages/static/js/main.fbb6891a.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.c6912e23.css.map": "/react-gh-pages/static/css/main.c6912e23.css.map",
-    "main.fbb6891a.js.map": "/react-gh-pages/static/js/main.fbb6891a.js.map"
+    "main.css": "/asdhamidi.github.io/static/css/main.c6912e23.css",
+    "main.js": "/asdhamidi.github.io/static/js/main.fbb6891a.js",
+    "index.html": "/asdhamidi.github.io/index.html",
+    "main.c6912e23.css.map": "/asdhamidi.github.io/static/css/main.c6912e23.css.map",
+    "main.fbb6891a.js.map": "/asdhamidi.github.io/static/js/main.fbb6891a.js.map"
   },
   "entrypoints": [
     "static/css/main.c6912e23.css",
