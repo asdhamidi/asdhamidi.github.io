@@ -1,38 +1,238 @@
-.App {
-  text-align: center;
+:root {
+  --highlight: rgb(138, 43, 226);
+  --text-color: rgb(0, 0, 0);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.dark {
+  --highlight: rgb(255, 236, 0);
+  --text-color: rgb(255, 255, 255);
+  background-color: #121212;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.dark li {
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 10rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+}
+
+.nav-container {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2em;
+  margin-top: 0.67em;
+  align-self: center;
+}
+
+ul {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.theme-btn, .nav-btn {
+  background-color: transparent;
+  margin: 0.25rem 0;
+  padding: 0.25rem;
+  font-size: 1.1rem;
+  border-color: transparent;
+  border-width: 5px;
+  transition-duration: .25s;
+  border-radius: .2rem;
+  color: var(--text-color);
+}
+
+.nav-btn:hover {
+  border-left-color: var(--highlight);
+}
+
+.active {
+  color: white;
+  transition-duration: .25s;
+  background-color: var(--highlight);
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.small-hr {
+  margin: 2rem;
+  width: 50%;
+  align-self: center;
+  transition-duration: .25s;  
+}
+.small-hr:hover {
+  border-color:var(--highlight);
+  width: 60%;
+}
+.links {
+  display: flex;
+  align-items: center;
+  justify-content:center ;
+  gap: 1rem;
+}
+
+.contact-links {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.contact-info a{
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.links a svg{
+  fill: var(--text-color);
+  stroke: var(--text-color);
+  transition-duration: .25s;
+}
+
+.links a svg:hover {
+  fill: var(--highlight);
+}
+
+.content-container {
+  max-width: 72ch;
+}
+
+.work-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.work-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  border-left: 5px solid gray;
+  border-radius: .2rem;
+  transition-duration: .25s;
+}
+
+.work-tab:hover {
+  border-color: var(--highlight);
+}
+
+.work-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.work-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.work-desc {
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.work-link{
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.work-link a svg{
+  fill: var(--text-color);
+  transition-duration: .25s;
+}
+
+.work-link a svg:hover {
+  fill: var(--highlight);
+}
+
+p a {
+  color: #007;
+  text-decoration: none;
+}
+
+p a::after {
+  content: " »";
+}
+p a::before {
+  content: "» ";
+}
+
+@media only screen and (max-width: 600px) {
+  #root {
+    flex-direction: column;
+    margin: 1rem;
+    gap: 0.1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .title {
+    align-self: flex-start;
+  }
+
+  .nav-container {
+    width: 100%;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 100%;
+  }
+  .nav ul {
+    flex-direction: row;
+  }
+
+  .home h1 {
+    margin: 0.1rem auto;
+  }
+
+  .work-title {
+    margin: 0;
+  }
+  .work-desc {
+    margin: 0;
   }
 }
