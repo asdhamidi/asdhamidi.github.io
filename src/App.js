@@ -13,14 +13,17 @@ function App() {
   const changePage = (choice) => {
     setContent(choice);
     if (choice === 1) {
+      document.title = "asad."
       setHome("nav-btn active");
       setAbout("nav-btn");
       setWorks("nav-btn");
     } else if (choice === 2) {
+      document.title = "about | asad."
       setHome("nav-btn");
       setAbout("nav-btn active");
       setWorks("nav-btn");
     } else {
+      document.title = "works | asad."
       setHome("nav-btn");
       setAbout("nav-btn");
       setWorks("nav-btn active");

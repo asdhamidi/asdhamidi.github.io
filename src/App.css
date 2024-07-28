@@ -1,17 +1,33 @@
 :root {
   --highlight: rgb(138, 43, 226);
-  --text-color: rgb(0, 0, 0);
+  --text-color: #000;
+  --link-color: #007;
 }
 
 .dark {
   --highlight: rgb(255, 236, 0);
-  --text-color: rgb(255, 255, 255);
+  --text-color: #FFF;
+  --link-color: #99F;
   background-color: #121212;
   color: white;
 }
 
 .dark li {
   color: white;
+}
+
+.dark .links a svg {
+  fill: white;
+}
+
+.dark .links a svg:hover {
+  fill: var(--highlight);
+  stroke: black;
+}
+
+.dark #linkedin-link:hover {
+  fill: var(--highlight);
+  stroke: black ;
 }
 
 #root {
@@ -29,6 +45,7 @@ ul {
 
 li {
   margin: 0;
+  user-select: none;
 }
 
 .nav-container {
@@ -38,10 +55,25 @@ li {
   flex-direction: column;
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .title {
   font-size: 2em;
   margin-top: 0.67em;
   align-self: center;
+  scale: 2;
+  transition-duration: 500ms ;
+  transition-timing-function: ease-in-out;
+}
+
+.title:hover {
+  fill: var(--highlight);
+  rotate: 90deg;
 }
 
 ul {
@@ -53,7 +85,7 @@ ul {
 
 .theme-btn, .nav-btn {
   background-color: transparent;
-  margin: 0.25rem 0;
+  margin: 0;
   padding: 0.25rem;
   font-size: 1.1rem;
   border-color: transparent;
@@ -61,16 +93,34 @@ ul {
   transition-duration: .25s;
   border-radius: .2rem;
   color: var(--text-color);
+  transition: all ease-in-out 500ms;
 }
 
-.nav-btn:hover {
-  border-left-color: var(--highlight);
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
 }
 
-.active {
-  color: white;
-  transition-duration: .25s;
-  background-color: var(--highlight);
+.nav-btn::before {
+  content: "» ";
+  color: transparent;
+  transition: all ease-in-out 500ms;
+}
+
+.nav-btn:hover::before {
+  color: var(--highlight);
+}
+
+
+.theme-btn:hover {
+  rotate: 360deg;
+}
+
+.active::before {
+  content: "» ";
+  color: var(--highlight);
 }
 
 footer {
@@ -117,14 +167,13 @@ footer {
   color: var(--text-color);
 }
 
-.links a svg{
-  fill: var(--text-color);
-  stroke: var(--text-color);
-  transition-duration: .25s;
-}
-
 .links a svg:hover {
   fill: var(--highlight);
+}
+
+#linkedin-link:hover {
+  fill: white;
+  stroke: var(--highlight);
 }
 
 .content-container {
@@ -144,10 +193,12 @@ footer {
   align-items: center;
   justify-content: center;
   margin: 0.5rem 0;
-  padding-left: 1rem;
+  padding: 0 1rem;
   border-left: 5px solid gray;
   border-radius: .2rem;
   transition-duration: .25s;
+  user-select: none;
+  
 }
 
 .work-tab:hover {
@@ -163,16 +214,21 @@ footer {
 }
 
 .work-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  margin: 0;
 }
 
 .work-desc {
   font-family: monospace;
   font-size: 0.9rem;
+  --tw-text-opacity: 1;
+    color: rgb(115 115 115 / var(--tw-text-opacity));
+  margin: 0;
 }
 
 .work-link{
+  scale: 1.25;
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -189,8 +245,13 @@ footer {
 }
 
 p a {
-  color: #007;
+  color: var(--link-color);
+  transition: all ease-in-out 500ms;
   text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
 }
 
 p a::after {
@@ -198,6 +259,24 @@ p a::after {
 }
 p a::before {
   content: "» ";
+}
+
+p a:hover::after {
+  color: var(--highlight);
+}
+
+p a:hover:before {
+  color: var(--highlight);
+}
+
+.content-title h1::after {
+  content: " »";
+  color: transparent;
+  transition: all ease-in-out 500ms;
+}
+
+.content-title h1:hover:after {
+  color: var(--highlight);
 }
 
 @media only screen and (max-width: 600px) {
@@ -225,7 +304,7 @@ p a::before {
     flex-direction: row;
   }
 
-  .home h1 {
+   h1 {
     margin: 0.1rem auto;
   }
 
@@ -234,5 +313,9 @@ p a::before {
   }
   .work-desc {
     margin: 0;
+  }
+
+  .nav {
+    flex-direction: row;
   }
 }

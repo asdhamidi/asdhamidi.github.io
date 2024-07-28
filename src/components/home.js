@@ -2,7 +2,7 @@ import React from 'react'
 
 const Home = ({}) => {
   return (
-    <div className="home">
+    <div className="content-title">
           <h1>Asadullah Hamidi</h1>
           <p>Hey there, I am Asad - a data engineer by profession and a lit major by pretension</p>
           <p>In data engineering, we essentially do plumbing, so you will usually find me laying down pipelines and 

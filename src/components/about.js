@@ -2,7 +2,7 @@ import React from "react";
 
 const About = ({}) => {
   return (
-    <div className="about">
+    <div className="content-title">
       <h1>about me</h1>
       <p>
         Talking about myself is still as tough as it was in the campus placement
@@ -14,7 +14,7 @@ const About = ({}) => {
       </p>
       <p>
         During college, I mostly dabbled in the <i>WebDev</i> side of things
-        (thank you <a href="https://www.theodinproject.com/">The Odin Project</a>), with the occasional tinkering with data
+        (thank you, <a href="https://www.theodinproject.com/">The Odin Project</a>), with the occasional tinkering with data
         analysis. I have a Bachelor's in Computer Science from GEU, Dehradun.
         Not an engineer by degree.
       </p>
