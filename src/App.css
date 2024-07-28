@@ -49,9 +49,9 @@ li {
 }
 
 .nav-container {
-  align-items: center;
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -63,9 +63,7 @@ li {
 }
 
 .title {
-  font-size: 2em;
-  margin-top: 0.67em;
-  align-self: center;
+  margin-top: 0.5rem;
   scale: 2;
   transition-duration: 500ms ;
   transition-timing-function: ease-in-out;
@@ -269,13 +267,21 @@ p a:hover:before {
   color: var(--highlight);
 }
 
-.content-title h1::after {
+.work-container {
+  margin-top: 1rem;
+}
+
+.content-title {
+  margin: 0 auto;
+}
+
+.content-title::after {
   content: " »";
   color: transparent;
   transition: all ease-in-out 500ms;
 }
 
-.content-title h1:hover:after {
+.content-title:hover:after {
   color: var(--highlight);
 }
 
@@ -287,11 +293,14 @@ p a:hover:before {
   }
 
   .title {
-    align-self: flex-start;
+    align-self: center;
   }
 
   .nav-container {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .nav {

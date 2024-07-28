@@ -2,8 +2,8 @@ import React from "react";
 
 const About = ({}) => {
   return (
-    <div className="content-title">
-      <h1>about me</h1>
+    <div >
+      <h1 className="content-title">about me</h1>
       <p>
         Talking about myself is still as tough as it was in the campus placement
         interviews, but here is an attempt.
