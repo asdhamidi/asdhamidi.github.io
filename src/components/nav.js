@@ -5,6 +5,8 @@ const Nav = ({ content, setContent }) => {
   const [home, setHome] = useState("nav-btn active");
   const [about, setAbout] = useState("nav-btn");
   const [works, setWorks] = useState("nav-btn");
+  const [blog, setBlog] = useState("nav-btn");
+
   const changePage = (choice) => {
     setContent(choice);
     if (choice === 1) {
@@ -12,16 +14,26 @@ const Nav = ({ content, setContent }) => {
       setHome("nav-btn active");
       setAbout("nav-btn");
       setWorks("nav-btn");
+      setBlog("nav-btn");
     } else if (choice === 2) {
       document.title = "about | asad.";
       setHome("nav-btn");
       setAbout("nav-btn active");
       setWorks("nav-btn");
-    } else {
+      setBlog("nav-btn");
+
+    } else  if (choice === 3) {
       document.title = "works | asad.";
       setHome("nav-btn");
       setAbout("nav-btn");
       setWorks("nav-btn active");
+      setBlog("nav-btn");
+    } else {
+      document.title = "blog | asad.";
+      setHome("nav-btn");
+      setAbout("nav-btn");
+      setWorks("nav-btn");
+      setBlog("nav-btn active");
     }
   };
 
@@ -63,6 +75,11 @@ const Nav = ({ content, setContent }) => {
           <li>
             <button className={works} onClick={() => changePage(3)}>
               works
+            </button>
+          </li>
+          <li>
+            <button className={blog} onClick={() => changePage(4)}>
+              blog
             </button>
           </li>
         </ul>
