@@ -23,7 +23,7 @@ const About = ({}) => {
         at rows of data or working on ETL pipelines. 
       </p>
       <p>
-        When not in front my work laptop, I usually write, read, watch
+        When not in front of my work laptop, I usually write, read, watch
         pretentious cinephilic movies, or tell jokes to my friends, which for
         some reason, they don't laugh at.
       </p>
