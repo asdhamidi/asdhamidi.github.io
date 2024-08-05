@@ -323,8 +323,17 @@ p a:hover:before {
   box-sizing: border-box;
 }
 
+.blog-page-date {
+  font-family: monospace;
+  font-size: 0.9rem;
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity));
+  margin: 0.5rem 0;
+}
+
 .blog-list {
   gap: 0.25rem;
+  margin-top: 0;
 }
 
 .blog-content a, .blog-content a::after, .blog-content a::before {
@@ -334,6 +343,10 @@ p a:hover:before {
 
 .blog-content a {
   user-select: none;
+}
+
+.blog-title {
+  margin-top: 1rem;
 }
 
 .blog-page-title svg {
@@ -347,14 +360,41 @@ p a:hover:before {
 .blog-page-title {
   display: flex;
   align-items: center;
-  justify-content: flex-start;  
+  justify-content: flex-end;  
   font-size: 1.25rem;
   user-select: none;
+  position: sticky;
+  top: 0;
+  right: 0;
+  width: 100%;
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: var(--text-color-highlight);
+  border-bottom: 1px solid var(--text-color);
 }
 
 .blog-list-title {
   margin: 0;
 }
+
+.blog-tab-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.loader-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 600px) {
   #root {
     flex-direction: column;
@@ -423,41 +463,23 @@ p a:hover:before {
     top: 0;
     z-index: 3;
     background-color: var(--text-color-highlight);
+    margin: 0;
 
   }
   .blog-divider {
     border-color: var(--text-color-light);
   }
 
-  
-  .blog-page-title {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--text-color-highlight);
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--text-color);
-  }
-
   .blog-list {
     margin-top: 0;
-  }
-
-  .blog-page-date {
-    margin: 0.5rem 0;
-    font-family: monospace;
-    font-size: 0.9rem;
-    --tw-text-opacity: 1;
-    color: rgb(115 115 115 / var(--tw-text-opacity));
   }
 
   .blog-content {
     padding-bottom: 1rem;
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
+
+  .blog-title {
+    margin-top: 1rem;
   }
 }

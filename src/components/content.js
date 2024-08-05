@@ -8,11 +8,15 @@ import axios from "axios";
 
 function Content({ content }) {
   const [blogList, setBlogList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("https://blog-api-h1by.vercel.app/posts")
-      .then((response) => setBlogList(response.data))
+      .then((response) => {
+        setLoading(false);
+        setBlogList(response.data);
+      })
       .catch((error) => console.error(error));
   }, []);
 
@@ -21,7 +25,7 @@ function Content({ content }) {
       {content === 1 && <Home />}
       {content === 2 && <About />}
       {content === 3 && <Works />}
-      {content === 4 && <Blog blogList={blogList}/>}
+      {content === 4 && <Blog blogList={blogList} loading={loading} />}
       <Footer />
     </div>
   );
