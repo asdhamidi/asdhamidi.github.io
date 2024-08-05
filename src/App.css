@@ -391,8 +391,12 @@ img {
 .loader-div {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.loader-div span{
+  margin: 1rem 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -481,5 +485,10 @@ img {
 
   .blog-title {
     margin-top: 1rem;
+  }
+
+  .loader-div {
+    margin: 0;
+    justify-content: center;
   }
 }
