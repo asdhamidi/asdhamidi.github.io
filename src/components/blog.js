@@ -6,13 +6,18 @@ import BeatLoader from "react-spinners/ClipLoader";
 
 function Blog({ blogList, loading }) {
   const [openedBlog, setOpenedBlog] = useState(false);
-  const [currentBlog, setCurrentBlog] = useState([]);
+  const [currentBlog, setCurrentBlog] = useState({
+    title: "Finding the title...",
+    content: "Conjuring the content...",
+    date: "Flipping throught the calendar...",
+  });
+
   const openBlog = (id) => {
+    setOpenedBlog(true);
     axios
       .get("https://blog-api-h1by.vercel.app/posts/" + id)
       .then((res) => {
         setCurrentBlog(res.data);
-        setOpenedBlog(true);
       })
       .catch((err) => console.error(err));
   };

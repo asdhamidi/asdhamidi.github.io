@@ -5,7 +5,11 @@ function BlogPage({ currentBlog, setOpenedBlog, setCurrentBlog }) {
     <div className="blog-page">
       <h1
         onClick={() => {
-          setCurrentBlog([]);
+          setCurrentBlog({
+            title: "Finding the title...",
+            content: "Conjuring the content...",
+            date: "Flipping throught the calendar...",
+          });
           setOpenedBlog(false);
         }}
         className="blog-page-title"
