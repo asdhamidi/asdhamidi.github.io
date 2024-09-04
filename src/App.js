@@ -5,7 +5,7 @@ import Content from "./components/content";
 
 function App() {
   const [content, setContent] = useState(1);
-  const [theme, setTheme] = useState("🔆");
+  const [theme, setTheme] = useState("🌙");
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");

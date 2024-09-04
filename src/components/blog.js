@@ -4,6 +4,10 @@ import BlogPage from "./blog-page";
 import axios from "axios";
 import BeatLoader from "react-spinners/ClipLoader";
 
+const override = {
+  borderColor: "#666",
+};
+
 function Blog({ blogList, loading }) {
   const [openedBlog, setOpenedBlog] = useState(false);
   const [currentBlog, setCurrentBlog] = useState({
@@ -34,6 +38,7 @@ function Blog({ blogList, loading }) {
               size={40}
               aria-label="Loading Spinner"
               data-testid="loader"
+              cssOverride={override}
             />
           </div>
           {loading === false &&

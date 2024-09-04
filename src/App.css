@@ -5,7 +5,8 @@
   --text-color: #000;
   --text-color-light: #777;
   --link-color: #007;
-  --code-color: #EEE
+  --code-color: #EEE;
+  --divider: #EEE
 }
 
 .dark {
@@ -17,6 +18,7 @@
   --text-color-light: #AAA;
   background-color: #121212;
   color: white;
+  --divider: #333
 }
 
 .dark li {
@@ -49,9 +51,9 @@ pre {
 #root {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2.5rem;
-  margin: 10rem 5rem;
+  margin: 8rem 20%;
   font-family: "Sofia Sans", serif;
 }
 
@@ -68,6 +70,8 @@ li {
 
 li button {
   width: 100%;
+  font-family: "Sofia Sans", serif;
+  font-weight: 600;
 }
 .nav-container {
   display: flex;
@@ -88,11 +92,14 @@ li button {
 .title {
   margin-top: 0.5rem;
   scale: 2;
+}
+
+.title svg {
   transition-duration: 250ms ;
   transition-timing-function: ease-in-out;
 }
 
-.title:hover {
+.title:hover svg {
   fill: var(--highlight);
   rotate: 90deg;
 }
@@ -107,7 +114,6 @@ ul {
 .theme-btn, .nav-btn {
   background-color: transparent;
   margin: 0;
-  padding: 0.25rem;
   font-size: 1.1rem;
   border-color: transparent;
   border-width: 5px;
@@ -161,8 +167,9 @@ footer {
 }
 .small-hr:hover {
   border-color:var(--highlight);
-  width: 60%;
+  width: 75%;
 }
+
 .links {
   display: flex;
   align-items: center;
@@ -215,7 +222,7 @@ footer {
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0rem;
 }
 
 .work-tab, .blog-tab { 
@@ -223,12 +230,11 @@ footer {
   align-items: center;
   justify-content: center;
   margin: 0.5rem 0;
-  padding: 0 1rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
   border-left: 5px solid gray;
-  border-radius: .2rem;
   transition-duration: .25s;
   user-select: none;
-  
 }
 
 .work-tab:hover, .blog-tab:hover {
@@ -241,6 +247,7 @@ footer {
   justify-content: center;
   flex-direction: column;
   gap: 0.5rem;
+  flex: 4;
 }
 
 .work-title, .blog-title {
@@ -263,6 +270,7 @@ footer {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  flex: 1;
 }
 
 .work-link a svg{
@@ -300,7 +308,7 @@ p a:hover:before {
 }
 
 .work-container,.blog-list, .blog-page {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .content-title {
@@ -326,7 +334,6 @@ p a:hover:before {
   gap: 0.25rem;
   padding: 0 1rem;
   border-left: 5px solid gray;
-  border-radius: .2rem;
   transition-duration: .25s;
   -webkit-user-select: none;
   user-select: none;
@@ -442,6 +449,8 @@ img {
     align-items: center;
     justify-content:space-between;
     width: 100%;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--divider);
   }
   .nav ul {
     flex-direction: row;
@@ -468,11 +477,12 @@ img {
   }
 
   .nav-btn {
-    padding: 0;
+    padding: 0.15rem 0.1rem;
+    border-radius: 0.4rem;
   }
 
   .theme-btn {
-    margin-bottom: -0.5rem;
+    margin-bottom: -1rem;
   }
 
   ul {
@@ -497,11 +507,6 @@ img {
     margin-top: 0;
   }
 
-  .blog-content {
-    padding-bottom: 1rem;
-  }
-
-
   .blog-title {
     margin-top: 1rem;
   }
@@ -509,5 +514,9 @@ img {
   .loader-div {
     margin: 0;
     justify-content: center;
+  }
+
+  .title:hover svg {
+    rotate: 180deg;
   }
 }
