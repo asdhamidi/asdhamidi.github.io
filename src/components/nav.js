@@ -21,8 +21,7 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
       setAbout("nav-btn active");
       setWorks("nav-btn");
       setBlog("nav-btn");
-
-    } else  if (choice === 3) {
+    } else if (choice === 3) {
       document.title = "works | asad.";
       setHome("nav-btn");
       setAbout("nav-btn");
@@ -37,7 +36,6 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
     }
   };
 
-
   function changeTheme() {
     if (theme === "🔆") setTheme("🌙");
     else setTheme("🔆");
@@ -46,24 +44,19 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
   }
   return (
     <div className="nav-container">
-      <div className="title">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M11.375 6.22l-5 4a1 1 0 0 0 -.375 .78v6l.006 .112a1 1 0 0 0 1.619 .669l4.375 -3.501l4.375 3.5a1 1 0 0 0 1.625 -.78v-6a1 1 0 0 0 -.375 -.78l-5 -4a1 1 0 0 0 -1.25 0z" />
-        </svg>
-      </div>
       <nav className="nav">
         <ul>
-          <li>
-            <button className={home} onClick={() => changePage(1)}>
-              home
-            </button>
+          <li className={"title " + home} onClick={() => changePage(1)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M11.375 6.22l-5 4a1 1 0 0 0 -.375 .78v6l.006 .112a1 1 0 0 0 1.619 .669l4.375 -3.501l4.375 3.5a1 1 0 0 0 1.625 -.78v-6a1 1 0 0 0 -.375 -.78l-5 -4a1 1 0 0 0 -1.25 0z" />
+            </svg>
           </li>
           <li>
             <button className={about} onClick={() => changePage(2)}>
@@ -81,9 +74,11 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
             </button>
           </li>
         </ul>
-        <button className="theme-btn" onClick={changeTheme}>
-          {theme}
-        </button>
+        <div>
+          <button className="theme-btn" onClick={changeTheme}>
+            {theme}
+          </button>
+        </div>
       </nav>
     </div>
   );

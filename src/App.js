@@ -18,7 +18,12 @@ function App() {
 
   return (
     <>
-      <Nav content={content} setContent={setContent} theme={theme} setTheme={setTheme} />
+      <Nav
+        content={content}
+        setContent={setContent}
+        theme={theme}
+        setTheme={setTheme}
+      />
       <Content content={content} />
     </>
   );
