@@ -92,7 +92,6 @@ li button {
 
 .title {
     height: fit-content;
-    padding: 0.25rem 0;
 }
 
 .title svg {
@@ -102,7 +101,7 @@ li button {
 }
 
 .active svg {
-    fill: var(--text-color-highlight);
+    fill: var(--highlight);
 }
 
 ul {
@@ -145,6 +144,10 @@ ul {
 
 .theme-btn:hover {
     rotate: 360deg;
+}
+
+.title.active {
+    background-color: transparent;
 }
 
 .active {
@@ -509,18 +512,17 @@ img {
         padding: 0;
     }
 
-    ul {
-        gap: 0.25rem;
-    }
-
     .blog-page {
         position: absolute;
-        width: 90vw;
+        width: 100vw;
         height: 100vh;
+        box-sizing: border-box;
         top: 0;
+        left: 0;
         z-index: 3;
         background-color: var(--text-color-highlight);
         margin: 0;
+        padding: 0 0.75rem;
     }
     .blog-divider {
         border-color: var(--text-color-light);
@@ -537,5 +539,17 @@ img {
     .loader-div {
         margin: 0;
         justify-content: center;
+    }
+
+    li {
+        margin: 0.1rem;
+    }
+
+    .active svg {
+        fill: var(--text-color-highlight);
+    }
+
+    .title.active {
+        background-color: var(--highlight);
     }
 }
