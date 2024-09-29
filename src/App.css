@@ -246,7 +246,7 @@ footer {
     margin: 0.5rem 0;
     border-left: 3px solid var(--highlight);
     padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-right: 0.5rem;
     transition-duration: 0.25s;
     user-select: none;
 }
@@ -356,7 +356,7 @@ p a:hover:before {
     justify-content: center;
     flex-direction: column;
     gap: 0.25rem;
-    padding: 0 1rem;
+    padding: 0 0.75rem;
     border-left: 3px solid var(--highlight);
     transition-duration: 0.25s;
     -webkit-user-select: none;
@@ -446,9 +446,9 @@ img {
 @media only screen and (max-width: 600px) {
     #root {
         flex-direction: column;
-        margin: 1rem;
+        margin: 1.5rem;
         gap: 0.1rem;
-        margin-top: 0;
+        margin-top: 0.5rem;
     }
 
     .small-hr {
@@ -542,7 +542,11 @@ img {
     }
 
     li {
-        margin: 0.1rem;
+        margin: 0 0.25rem;
+    }
+
+    .title {
+        margin-right: 0.25rem;
     }
 
     .active svg {
