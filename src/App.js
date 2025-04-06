@@ -7,15 +7,6 @@ function App() {
   const [content, setContent] = useState(1);
   const [theme, setTheme] = useState("🌙");
 
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-
-    if (mq.matches) {
-      document.body.classList.toggle("dark");
-      setTheme("🌙");
-    }
-  }, []);
-
   return (
     <>
       <Nav

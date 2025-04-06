@@ -46,7 +46,7 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
     <div className="nav-container">
       <nav className="nav">
         <ul>
-          <li className={"title " + home} onClick={() => changePage(1)}>
+          <li>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -59,6 +59,11 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
             </svg>
           </li>
           <li>
+            <button className={"title " + home} onClick={() => changePage(1)}>
+              home
+            </button>
+          </li>
+          <li>
             <button className={about} onClick={() => changePage(2)}>
               about
             </button>
@@ -66,11 +71,6 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
           <li>
             <button className={works} onClick={() => changePage(3)}>
               works
-            </button>
-          </li>
-          <li>
-            <button className={blog} onClick={() => changePage(4)}>
-              blog
             </button>
           </li>
         </ul>

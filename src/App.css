@@ -68,6 +68,14 @@ li {
     width: 100%;
 }
 
+li:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(2);
+    margin-bottom: 1rem;
+}
+
 li button {
     width: 100%;
     font-family: "Sofia Sans", serif;
@@ -146,10 +154,6 @@ ul {
     rotate: 360deg;
 }
 
-.title.active {
-    background-color: transparent;
-}
-
 .active {
     background-color: var(--highlight);
     color: var(--text-color-highlight);
@@ -223,6 +227,7 @@ footer {
 .content-container {
     max-width: 80ch;
     width: 100%;
+    font-size: 1.1rem;
 }
 
 .content-container p:last-child {
@@ -446,9 +451,9 @@ img {
 @media only screen and (max-width: 600px) {
     #root {
         flex-direction: column;
-        margin: 1.5rem;
+        margin: 1.25rem;
         gap: 0.1rem;
-        margin-top: 0.5rem;
+        margin-top: 1.25rem;
     }
 
     .small-hr {
@@ -466,7 +471,6 @@ img {
         justify-content: center;
         background-color: var(--text-color-highlight);
         top: 0;
-        padding-top: 1rem;
         z-index: 1;
     }
 
@@ -480,6 +484,16 @@ img {
     .nav ul {
         flex-direction: row;
         margin-bottom: 0.25rem;
+    }
+
+    .nav-container svg {
+        transform: scale(2);
+        box-sizing: border-box;
+        margin: .5rem;
+    }
+
+    .nav ul li:first-child{
+        margin-left: -.5rem;
     }
 
     h1 {
@@ -502,7 +516,7 @@ img {
     }
 
     .nav-btn {
-        padding: 0.15rem 0.1rem;
+        padding: 0.05rem 0.05rem;
         border-radius: 0.4rem;
     }
 
