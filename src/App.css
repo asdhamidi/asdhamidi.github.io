@@ -487,13 +487,17 @@ img {
     }
 
     .nav-container svg {
-        transform: scale(2);
         box-sizing: border-box;
-        margin: .5rem;
+        margin: 0 .5rem;
     }
 
     .nav ul li:first-child{
+        margin: 0;
         margin-left: -.5rem;
+        transform: scale(1.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     h1 {
