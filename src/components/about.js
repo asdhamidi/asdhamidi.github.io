@@ -19,7 +19,7 @@ const About = ({}) => {
       </p>
       <p>
         I am currently at Deloitte USI in Hyderabad, where I work in the data engineering team. You will usually find me staring
-        at rows of data to make sense of or working on ETL pipelines. 
+        at rows of data to make sense of or working on ETL pipelines.
       </p>
       <p>
         When not in front of my work laptop, I usually write, read, watch

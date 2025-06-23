@@ -16,9 +16,9 @@
     --text-color-highlight: #121212;
     --link-color: #bbf;
     --text-color-light: #aaa;
-    background-color: #121212;
     color: white;
     --divider: #333;
+    background-color: #121212;
 }
 
 .dark li {
@@ -155,12 +155,14 @@ ul {
 }
 
 .active {
-    background-color: var(--highlight);
-    color: var(--text-color-highlight);
+    color: var(--highlight);
+    background-color: transparent;
+    font-weight: bold;
 }
 
 .active:hover {
-    color: var(--text-color-highlight);
+    color: var(--highlight);
+    background-color: transparent;
 }
 
 footer {
@@ -448,14 +450,32 @@ img {
     margin: 1rem 0;
 }
 
+.home-pic {
+    width: auto;
+    height: 7.5rem;
+    margin: .25rem 0;
+    margin-bottom: -.5rem;
+    border-radius: 100%;
+}
+
+.home-pic-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
 @media only screen and (max-width: 600px) {
     #root {
         flex-direction: column;
-        margin: 1.25rem;
+        margin: 0;
         gap: 0.1rem;
-        margin-top: 1.25rem;
     }
 
+    .home-pic {
+        display: block;
+    }
     .small-hr {
         margin: 1rem;
     }
@@ -472,6 +492,15 @@ img {
         background-color: var(--text-color-highlight);
         top: 0;
         z-index: 1;
+        padding: 1rem;
+        box-sizing: border-box;
+        padding-bottom: 0;
+    }
+
+    .content-container {
+        padding: 1rem;
+        box-sizing: border-box;
+        padding-top: 0;
     }
 
     .nav {
@@ -494,6 +523,7 @@ img {
     .nav ul li:first-child{
         margin: 0;
         margin-left: -.5rem;
+        margin-top: -.1rem;
         transform: scale(1.5);
         display: flex;
         align-items: center;
@@ -559,10 +589,6 @@ img {
         justify-content: center;
     }
 
-    li {
-        margin: 0 0.25rem;
-    }
-
     .title {
         margin-right: 0.25rem;
     }
@@ -572,6 +598,7 @@ img {
     }
 
     .title.active {
-        background-color: var(--highlight);
+        color: var(--highlight);
+        background-color: transparent;
     }
 }
