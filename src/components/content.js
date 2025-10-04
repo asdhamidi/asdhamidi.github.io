@@ -26,7 +26,7 @@ function Content({ content }) {
       {content === 2 && <About />}
       {content === 3 && <Works />}
       {content === 4 && <Blog blogList={blogList} loading={loading} />}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

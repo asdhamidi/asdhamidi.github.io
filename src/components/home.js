@@ -4,10 +4,10 @@ const Home = ({}) => {
   return (
     <div>
           <div className="home-pic-container">
-            <img src={require("../assets/asad.png")} alt="me" className='home-pic'/>
+            <img src={require("../assets/asad.jpg")} alt="me" className='home-pic'/>
             <div>
-                <p className="content-title">Hey,</p>
-                <p className="content-title">I am Asad!</p>
+                <p className="content-title-1">Hey,</p>
+                <p className="content-title-1">I am Asad!</p>
 
             </div>
           </div>

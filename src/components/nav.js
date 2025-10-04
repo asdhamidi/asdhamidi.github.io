@@ -37,8 +37,8 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
   };
 
   function changeTheme() {
-    if (theme === "🔆") setTheme("🌙");
-    else setTheme("🔆");
+    if (theme === "☾") setTheme("☼");
+        else setTheme("☾");
 
     document.body.classList.toggle("dark");
   }
@@ -70,13 +70,13 @@ const Nav = ({ content, setContent, theme, setTheme }) => {
           </li>
           <li>
             <button className={works} onClick={() => changePage(3)}>
-              works
+              work
             </button>
           </li>
         </ul>
         <div>
           <button className="theme-btn" onClick={changeTheme}>
-            {theme}
+              {theme}
           </button>
         </div>
       </nav>

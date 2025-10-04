@@ -4,10 +4,11 @@ import WorkTab from "./work-tab";
 const Works = ({}) => {
   return (
     <div className="work-content">
-      <h1 className="content-title">works</h1>
+      <h1 className="content-title">projects</h1>
       <div className="work-container">
-        <WorkTab workTitle="EEG Motor Movement Prediction" workDesc="EEG Data Analysis and Classification, offering EDA, data preprocessing, and neural network model building for brainwave data." workLink="https://github.com/asdhamidi/EEG-Motor-Movement"/>
-        <WorkTab workTitle="Hisaab" workDesc="A React-based web application for my flatmates to manage and log our joint expenses, along with calculating who owes what. Comes with activity tracking and charts." workLink="https://github.com/asdhamidi/hisaab" />
+        <WorkTab workTitle="WingWatch" workDesc="A real-time aviation data pipeline that transforms live flight information into clear, actionable insights." workLink="https://github.com/asdhamidi/WingWatch" workTech={['airflow', 'posgtres', 'pyspark', 'minio', 'docker', 'grafana', 'opensky']}/>
+        <WorkTab workTitle="Hisaab Analytics" workDesc="Containerized pipeline turning personal expense data into structured insights with Airflow, PySpark, PostgreSQL & MinIO." workLink="https://github.com/asdhamidi/hisaab-pipeline" workTech={['airflow', 'posgtres', 'dbt', 'minio', 'mongodb', 'docker', 'superset']}/>
+        <WorkTab workTitle="Hisaab" workDesc="An expense-tracking web app for my flatmates to manage and log our joint expenses. Comes with automatic expense categorization, budget tracking, and more." workLink="https://github.com/asdhamidi/hisaab" workTech={['react', 'flask', 'mongodb', 'github pages', 'vercel', 'axios']} liveLink="https://asdhamidi.github.io/hisaab"/>
       </div>
     </div>
   );

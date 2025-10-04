@@ -45,7 +45,7 @@ function Blog({ blogList, loading }) {
             blogList.map((blog) => (
               <div className="blog-tab" onClick={() => openBlog(blog._id)}>
                 <p className="blog-tab-title">{blog.title}</p>
-                <small className="blog-date">{blog.date}</small>
+                <small className="blog-date"><i>{blog.date}</i></small>
               </div>
             ))}
         </div>

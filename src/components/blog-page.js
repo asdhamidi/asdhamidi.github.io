@@ -33,7 +33,7 @@ function BlogPage({ currentBlog, setOpenedBlog, setCurrentBlog }) {
         blog
       </h1>
       <p className="blog-title">{currentBlog.title}</p>
-      <p className="blog-page-date"> {currentBlog.date}</p>
+      <p className="blog-page-date"><i>{currentBlog.date}</i></p>
       <hr className="blog-divider"></hr>
       <div
         dangerouslySetInnerHTML={{ __html: currentBlog.content }}
