@@ -12,7 +12,7 @@ const About = ({}) => {
         </p>
         <p>
             I studied Computer Science at GEU, Dehradun where I mostly dabbled in the <i>WebDev</i> side of things
-            (thank you, <a href="https://www.theodinproject.com/">The Odin Project</a>) before landing in the world of data.
+            (thank you, <a href="https://www.theodinproject.com/">The Odin Project<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>) before landing in the world of data.
         </p>
         <p>
             When not at work, you will find me: Debating the superiority of Linux, looking at the sky to spot a plane and say, "Do you know where that plane is going?", or reading the most random article on Wikipedia
