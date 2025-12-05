@@ -1,0 +1,6 @@
+[
+  {"title": "Functions: a complete reference", "author": "Rodrigo Girão Serrão", "link": "https://mathspp.com/blog/pydonts/functions-a-complete-reference"},
+  {"title": "DuckDB vs Polars. Wait. DuckDB and Polars.", "author": "Daniel B", "link": "https://www.confessionsofadataguy.com/duckdb-vs-polars-wait-duckdb-and-polars/"},
+  {"title": "Python Weekly Newsletter", "author": "Python Weekly Staff", "link": "https://www.pythonweekly.com/"},
+  {"title": "A Practical Tour From Source to CPU", "author" : "Moncef Abboud", "link": "https://cefboud.com/posts/code-binaries-bytecode-shared-libs/"}
+]
