@@ -21,6 +21,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
+    "hot-preview": "vite build --watch",
     "deploy": "gh-pages -d dist"
   },
   "browserslist": {

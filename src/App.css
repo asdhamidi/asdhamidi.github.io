@@ -389,6 +389,10 @@ footer {
     gap: 0.5rem;
 }
 
+.blog-info-deets p {
+    font-weight: 400;
+}
+
 .work-info p {
     margin: 0.1rem 0;
 }
@@ -621,7 +625,7 @@ a {
 }
 
 .blog-list-title {
-    margin: 0;
+    margin: 1rem;
 }
 
 .blog-tab-title {
@@ -763,7 +767,7 @@ img {
     }
 
     .blog-list {
-        margin-top: 0;
+        margin-top: 0.5rem;
     }
 
     .blog-title {
