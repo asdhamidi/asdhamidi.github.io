@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>asad.</title>
+    <script>
+      sessionStorage.setItem(
+        'redirectPath',
+        window.location.pathname + window.location.search + window.location.hash
+      );
+      window.location.replace(window.location.origin + '/');
+    </script>
+  </head>
+  <body></body>
+</html>
