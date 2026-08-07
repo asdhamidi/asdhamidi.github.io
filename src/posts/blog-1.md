@@ -7,6 +7,7 @@ description: "A deep dive into hitting an upload limit on SharePoint, hitting a 
 
 # The Same Wall, Twice: What Two Unrelated Data Pipelines Taught Me About Scale
 
+![The Same Wall Twice Infographic](/the-same-wall-twice-infographic.svg)
 _A deep dive into hitting an upload limit on SharePoint, hitting a JVM limit on Databricks a year later, and realizing they were the same problem wearing different clothes._
 
 ---

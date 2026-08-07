@@ -1,0 +1,105 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <title>The Same Wall, Twice — an infographic on recurring scaling limits in data pipelines</title>
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#121A2C"/>
+      <stop offset="1" stop-color="#0A101C"/>
+    </linearGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1E2A44" stroke-width="1"/>
+    </pattern>
+
+    <linearGradient id="flowGrad" gradientUnits="userSpaceOnUse" x1="200" y1="0" x2="1050" y2="0">
+      <stop offset="0" stop-color="#E2A659" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#E2A659" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- base -->
+  <rect x="0" y="0" width="1200" height="675" fill="url(#bgGrad)"/>
+  <rect x="0" y="0" width="1200" height="675" fill="url(#grid)" opacity="0.55"/>
+
+  <!-- faint signature mark: infinity, a nod to "infinitely scalable" -->
+  <text x="1010" y="600" font-family="Helvetica Neue, Arial, sans-serif" font-size="300"
+        fill="#EEF1F7" opacity="0.035" text-anchor="middle"
+        transform="rotate(-6 1010 600)">&#8734;</text>
+
+  <!-- corner registration marks -->
+  <g stroke="#8FA8C4" stroke-width="1.5" opacity="0.35">
+    <path d="M32,40 H48 M40,32 V48"/>
+    <path d="M1152,40 H1168 M1160,32 V48"/>
+    <path d="M32,628 H48 M40,620 V636"/>
+    <path d="M1152,628 H1168 M1160,620 V636"/>
+  </g>
+
+  <!-- header -->
+  <text x="80" y="64" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="13"
+        letter-spacing="3" fill="#8FA8C4" opacity="0.9">A RECURRING FAILURE MODE IN DATA ENGINEERING</text>
+
+  <text x="77" y="120" font-family="Helvetica Neue, Arial, sans-serif" font-size="52" font-weight="700"
+        letter-spacing="-0.5" fill="#EEF1F7">The Same Wall, Twice</text>
+
+  <text x="80" y="152" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="16"
+        fill="#8FA8C4" opacity="0.8">different stack. same limit. spotted a year apart.</text>
+
+  <!-- threshold / limit line spanning both lanes -->
+  <line x1="760" y1="244" x2="760" y2="508" stroke="#8FA8C4" stroke-width="2"
+        stroke-dasharray="2 7" opacity="0.55"/>
+  <text x="760" y="232" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="11"
+        letter-spacing="2" fill="#8FA8C4" text-anchor="middle" opacity="0.85">LIMIT</text>
+
+  <!-- bridge label between the two lanes, sitting on the threshold line -->
+  <rect x="675" y="368" width="170" height="26" rx="13" fill="#0A101C" stroke="#8FA8C4"
+        stroke-width="1" opacity="0.9"/>
+  <text x="760" y="385" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="11"
+        letter-spacing="1.5" fill="#EEF1F7" text-anchor="middle" opacity="0.9">OVER A YEAR APART</text>
+
+  <!-- Lane A tag -->
+  <text x="110" y="310" font-family="Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="700"
+        fill="#8FA8C4" text-anchor="middle" opacity="0.55">A</text>
+
+  <!-- Lane A: monolith hits the limit and fractures -->
+  <polygon points="200,268 730,268 748,276 718,286 742,296 712,306 736,316 706,326 718,332 200,332"
+           fill="#55658A"/>
+  <g fill="#55658A">
+    <rect x="748" y="255" width="14" height="10" opacity="0.55" transform="rotate(20 755 260)"/>
+    <rect x="762" y="272" width="10" height="16" opacity="0.5" transform="rotate(-15 767 280)"/>
+    <rect x="735" y="300" width="18" height="8" opacity="0.6" transform="rotate(35 744 304)"/>
+    <rect x="758" y="318" width="9" height="13" opacity="0.45" transform="rotate(10 762 324)"/>
+    <rect x="700" y="245" width="12" height="9" opacity="0.4" transform="rotate(-25 706 249)"/>
+    <rect x="770" y="340" width="11" height="8" opacity="0.35" transform="rotate(45 775 344)"/>
+  </g>
+
+  <!-- Lane B tag -->
+  <text x="110" y="468" font-family="Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="700"
+        fill="#8FA8C4" text-anchor="middle" opacity="0.55">B</text>
+
+  <!-- Lane B: connecting flow line, threaded through the chunks -->
+  <line x1="200" y1="460" x2="1050" y2="460" stroke="#8FA8C4" stroke-width="1" opacity="0.25"/>
+
+  <!-- Lane B: same limit, crossed as a stream of bounded pieces -->
+  <g fill="url(#flowGrad)">
+    <rect x="200" y="440" width="40" height="40" rx="3"/>
+    <rect x="254" y="440" width="40" height="40" rx="3"/>
+    <rect x="308" y="440" width="40" height="40" rx="3"/>
+    <rect x="362" y="440" width="40" height="40" rx="3"/>
+    <rect x="416" y="440" width="40" height="40" rx="3"/>
+    <rect x="470" y="440" width="40" height="40" rx="3"/>
+    <rect x="524" y="440" width="40" height="40" rx="3"/>
+    <rect x="578" y="440" width="40" height="40" rx="3"/>
+    <rect x="632" y="440" width="40" height="40" rx="3"/>
+    <rect x="686" y="440" width="40" height="40" rx="3"/>
+    <rect x="740" y="440" width="40" height="40" rx="3"/>
+    <rect x="794" y="440" width="40" height="40" rx="3"/>
+    <rect x="848" y="440" width="40" height="40" rx="3"/>
+    <rect x="902" y="440" width="40" height="40" rx="3"/>
+    <rect x="956" y="440" width="40" height="40" rx="3"/>
+    <rect x="1010" y="440" width="40" height="40" rx="3"/>
+  </g>
+
+  <!-- footer -->
+  <text x="1120" y="618" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="11"
+        letter-spacing="2" fill="#8FA8C4" text-anchor="end" opacity="0.5">FIELD NOTES — DATA ENGINEERING</text>
+</svg>
