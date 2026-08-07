@@ -12,11 +12,10 @@ const Home = ({}) => {
 
             </div>
           </div>
-          <p>A data engineer by profession and a lit major by pretension</p>
-          <p>In data engineering, we essentially do plumbing, so you will usually find me laying down pipelines and
-            tightening the nutbolts. Although, a leak happens more than I show or admit.
+          <p>A data engineer by profession and a lit major by pretension.</p>
+          <p>In data engineering, we're essentially plumbers, so you'll usually find me laying down pipelines and tightening the nuts and bolts. Though a leak happens more often than I'd like to admit.
           </p>
-          <p>As of now, I am an Associate Data Engineer @ Deloitte USI, working on Snowflake, Airflow, dbt, and Databricks — which is a fancy way of saying I make data move in the right direction.</p>
+          <p>Currently, I am an Associate Data Engineer @ Deloitte USI, where I work across the modern data tech stack - a fancy way of saying I make data move in the right direction.</p>
     </div>
   )
 }
