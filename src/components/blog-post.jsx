@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { getPostBySlug } from "../utils/posts";
+import remarkGfm from 'remark-gfm';
 
 function BlogPost() {
   const { slug } = useParams();
@@ -50,7 +51,7 @@ function BlogPost() {
       </p>
       <hr className="blog-divider" />
       <div className="blog-content">
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
     </div>
   );
