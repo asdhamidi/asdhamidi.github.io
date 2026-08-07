@@ -155,20 +155,20 @@ ul {
 }
 
 .theme-btn {
-    transition-duration: 500ms;
-    font-size: 1.75rem;
     cursor: pointer;
-    transition:
-        transform 0.3s ease,
-        color 0.3s ease;
+    opacity: 0.5;
+    line-height: 0;
+    padding: 4px;
+    transition: opacity 0.2s ease, transform 0.25s ease;
 }
 
 .theme-btn:hover {
+    opacity: 1;
     color: var(--highlight);
 }
 
 .theme-btn:active {
-    transform: rotate(30deg);
+    transform: rotate(25deg) scale(0.9);
 }
 
 .nav-btn {
