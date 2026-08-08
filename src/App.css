@@ -820,3 +820,62 @@ img {
         background-color: transparent;
     }
 }
+/* Books page */
+
+.books .section-tagline {
+    margin: 0;
+}
+
+.books-list {
+    column-count: 2;
+    column-gap: 3.5rem;
+    margin-top: 1rem;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+    break-inside: avoid;
+    margin-bottom: 0.65rem;
+    cursor: default;
+}
+
+.book-title {
+    font-family: "Alegreya", serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-color);
+    line-height: 1.3;
+    transition: color 200ms ease;
+}
+
+.book-item:hover .book-title {
+    color: var(--highlight);
+}
+
+.book-author {
+    font-family: "Sofia Sans", serif;
+    font-size: 0.95rem;
+    color: var(--text-color-light);
+}
+
+@media only screen and (max-width: 600px) {
+    .books-list {
+        column-count: 2;
+        column-gap: 1.25rem;
+    }
+
+    .book-item {
+        margin-bottom: 0.6rem;
+    }
+
+    .book-title {
+        font-size: 1rem;
+    }
+
+    .book-author {
+        font-size: 0.85rem;
+    }
+}

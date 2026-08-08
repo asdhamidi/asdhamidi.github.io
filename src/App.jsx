@@ -8,6 +8,7 @@ import About from "./components/about";
 import Works from "./components/works";
 import Blog from "./components/blog";
 import BlogPost from "./components/blog-post";
+import Books from "./components/books";
 
 function App() {
   const [theme, setTheme] = useState("☼");
@@ -19,6 +20,7 @@ function App() {
       "/about": "about | asad.",
       "/work": "works | asad.",
       "/blog": "blog | asad.",
+      "/books": "books | asad.",
     };
     if (!location.pathname.startsWith("/blog/")) {
       document.title = titleMap[location.pathname] ?? "asad.";
@@ -36,6 +38,7 @@ function App() {
             <Route path="/work" element={<Works />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/books" element={<Books />} />
           </Routes>
         </div>
       </div>

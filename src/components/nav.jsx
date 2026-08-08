@@ -57,6 +57,16 @@ const Nav = ({ theme, setTheme }) => {
           </li>
           <li>
             <NavLink
+              to="/books"
+              className={({ isActive }) =>
+                "nav-btn" + (isActive ? " active" : "")
+              }
+            >
+              books
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/blog"
               className={({ isActive }) =>
                 "nav-btn" + (isActive ? " active" : "")
