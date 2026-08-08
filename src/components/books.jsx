@@ -11,7 +11,6 @@ const books = [
   { title: "Gandhi: The Years That Changed the World, 1914-1948", author: "Ramachandra Guha" },
   { title: "The Emperor of All Maladies", author: "Siddhartha Mukherjee" },
   { title: "India After Gandhi", author: "Ramachandra Guha" },
-  { title: "An Era of Darkness", author: "Shashi Tharoor" },
   { title: "The Hitchhiker's Guide to the Galaxy", author: "Douglas Adams" },
   { title: "The Small Town Sea", author: "Anees Salim" },
   { title: "Masala Lab", author: "Krish Ashok" },
@@ -30,7 +29,7 @@ function Books() {
   return (
     <div className="books">
       <h1 className="content-title">books</h1>
-      <p className="section-tagline">books that stayed with me</p>
+      <p className="section-tagline">some books I recommend</p>
       <div className="books-list">
         {books.map((book, i) => (
           <div className="book-item" key={i}>

@@ -1,4 +1,5 @@
 import React from "react";
+import resumePDF from "../assets/Asadullah_Hamidi_Resume.pdf";
 
 const Footer = ({}) => {
   return (
@@ -16,9 +17,9 @@ const Footer = ({}) => {
         <a className="link" href="https://www.linkedin.com/in/asadullah-hamidi/">
             linkedin
         </a>
-        •
-        <a className="link" href="https://music.youtube.com/channel/UCTbqctbOUrAxm__xBTPfkAQ?si=7fhL9jOnKZKr9TOH">
-            music
+        /
+        <a className="link resume-footer-link" href={resumePDF} download="Asadullah_Hamidi_Resume.pdf">
+            [résumé]
         </a>
       </div>
     </footer>

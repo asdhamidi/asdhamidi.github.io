@@ -245,8 +245,23 @@ ul {
 }
 
 .blog-content a {
-    color: var(--link-color);
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.blog-link-text {
     text-decoration: underline;
+}
+
+.blog-link-arrow {
+    display: inline-block;
+    margin-left: 0.15rem;
+    text-decoration: none;
+    transition: transform 200ms ease;
+}
+
+.blog-content a:hover .blog-link-arrow {
+    transform: rotate(45deg);
 }
 
 .blog-content a:hover {
@@ -523,6 +538,17 @@ footer {
     font-size: 0.9rem;
 }
 
+.work-link svg {
+    transition: transform 200ms ease, stroke 200ms ease;
+    stroke: var(--text-color-light);
+}
+
+.work-tab:hover .work-link svg,
+.blog-tab:hover .work-link svg {
+    transform: rotate(45deg);
+    stroke: var(--highlight);
+}
+
 .work-link a svg {
     transition-duration: 0.25s;
 }
@@ -562,6 +588,7 @@ p a:hover svg {
     margin: 0 auto;
     font-size: 2rem;
     font-weight: 700;
+    user-select: none;
 }
 
 .content-title-1:first-child {
@@ -820,10 +847,20 @@ img {
         background-color: transparent;
     }
 }
-/* Books page */
+
 
 .books .section-tagline {
     margin: 0;
+}
+
+.resume-footer-link {
+    color: var(--highlight);
+    opacity: 0.8;
+}
+
+.resume-footer-link:hover {
+    color: var(--highlight);
+    opacity: 1;
 }
 
 .books-list {
