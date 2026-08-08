@@ -15,6 +15,10 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    fetch("https://blog-api-h1by.vercel.app/visit", { method: "POST" }).catch(() => {});
+  }, []);
+
+  useEffect(() => {
     const titleMap = {
       "/": "asad.",
       "/about": "about | asad.",
