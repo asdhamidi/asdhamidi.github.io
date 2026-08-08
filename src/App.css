@@ -839,6 +839,7 @@ img {
     break-inside: avoid;
     margin-bottom: 0.65rem;
     cursor: default;
+    user-select: none;
 }
 
 .book-title {
