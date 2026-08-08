@@ -11,7 +11,7 @@ const About = ({}) => {
             I'm an Associate Data Engineer at Deloitte USI where I solve data puzzles and wrestle pipelines into submission. My journey into tech was unexpected - a literature kid who took a wrong turn and somehow never looked back.
         </p>
         <p>
-            Turns out the wrong turn had a lot of side roads. I've spent years going down most of them - backend development, web dev, Linux, cloud, AI - not because the job required it, but because I couldn't help it. What's always hooked me is the engineering judgment - not just making something work, but asking why this design over that one, where things break quietly, what it actually takes to make something last.
+            Turns out the wrong turn had a lot of side roads. I've spent years going down most of them - backend development, web dev, Linux, cloud, AI - not because the job required it, but because I couldn't help it.
         </p>
         <p>
             At work, I deal with data pipelines, Python frameworks, and lately agentic AI systems, mostly building things that sit a bit outside what standard tooling gives you out of the box. It's uncharted territory with no clear map, and surprises that catch you off-guard.
