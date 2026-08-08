@@ -11,6 +11,7 @@ const books = [
   { title: "Gandhi: The Years That Changed the World, 1914-1948", author: "Ramachandra Guha" },
   { title: "The Emperor of All Maladies", author: "Siddhartha Mukherjee" },
   { title: "India After Gandhi", author: "Ramachandra Guha" },
+  { title: "An Era of Darkness", author: "Shashi Tharoor" },
   { title: "The Hitchhiker's Guide to the Galaxy", author: "Douglas Adams" },
   { title: "The Small Town Sea", author: "Anees Salim" },
   { title: "Masala Lab", author: "Krish Ashok" },
