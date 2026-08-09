@@ -2,7 +2,7 @@
 title: "One Cell at a Time: What Building an Artifact Delivery Pipeline Actually Taught Me"
 date: "2025-06-15"
 slug: "one-cell-at-a-time"
-description: "A deep dive into hitting an upload limit on SharePoint, hitting a JVM limit on Databricks a year later, and realizing they were the same problem wearing different clothes."
+description: "A framework that quietly stopped scaling in three different places — one upload that hung without ever failing, one library that got slower with every cell, and one file that reads its own edits back — and what tying them together revealed about designing for size instead of hoping it never comes up."
 ---
 
 # One Cell at a Time: What Building an Artifact Delivery Pipeline Actually Taught Me
