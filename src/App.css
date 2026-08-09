@@ -855,7 +855,6 @@ img {
 
 .resume-footer-link {
     color: var(--highlight);
-    opacity: 0.8;
 }
 
 .resume-footer-link:hover {
