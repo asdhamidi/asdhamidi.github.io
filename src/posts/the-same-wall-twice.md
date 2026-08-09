@@ -1,6 +1,6 @@
 ---
 title: "The Same Wall, Twice: What Two Unrelated Pipelines Taught Me About Scale"
-date: "2025-07-08"
+date: "2026-08-08"
 slug: "the-same-wall-twice"
 description: "A deep dive into hitting an upload limit on SharePoint, hitting a JVM limit on Databricks a year later, and realizing they were the same problem wearing different clothes."
 ---
