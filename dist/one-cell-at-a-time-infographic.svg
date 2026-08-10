@@ -1,0 +1,136 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+
+<style>
+  .serif { font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif; }
+  .mono  { font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace; }
+</style>
+
+<rect x="0" y="0" width="1600" height="900" fill="#E9E6DC"/>
+<line x1="0" y1="46" x2="1600" y2="46" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="88" x2="1600" y2="88" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="130" x2="1600" y2="130" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="172" x2="1600" y2="172" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="214" x2="1600" y2="214" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="256" x2="1600" y2="256" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="298" x2="1600" y2="298" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="340" x2="1600" y2="340" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="382" x2="1600" y2="382" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="424" x2="1600" y2="424" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="466" x2="1600" y2="466" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="508" x2="1600" y2="508" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="550" x2="1600" y2="550" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="592" x2="1600" y2="592" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="634" x2="1600" y2="634" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="676" x2="1600" y2="676" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="718" x2="1600" y2="718" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="760" x2="1600" y2="760" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="802" x2="1600" y2="802" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="844" x2="1600" y2="844" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="0" y1="886" x2="1600" y2="886" stroke="#D9D5C7" stroke-width="1" opacity="0.55"/>
+<line x1="108" y1="0" x2="108" y2="900" stroke="#C9A15A" stroke-width="1.5" opacity="0.45"/>
+<text x="140" y="92" class="mono" font-size="15" letter-spacing="3" fill="#B8792E" opacity="0.95">PIPELINE POST-MORTEM</text>
+<text x="1460" y="92" class="mono" font-size="15" letter-spacing="1.5" fill="#262A2E" opacity="0.5" text-anchor="end">15 JUN 2025</text>
+<text x="136" y="192" class="serif" font-size="90" fill="#262A2E" letter-spacing="-1">One Cell at a Time</text>
+<text x="140" y="234" class="mono" font-size="22" fill="#262A2E" opacity="0.62">Three quiet ways a data pipeline stopped scaling</text>
+<text x="170" y="378" class="mono" font-size="14" letter-spacing="2" fill="#262A2E" opacity="0.55">SNOWFLAKE</text>
+<text x="1430" y="378" class="mono" font-size="14" letter-spacing="2" fill="#262A2E" opacity="0.55" text-anchor="end">DELIVERED</text>
+<rect x="164.5" y="478.5" width="15" height="15" fill="#262A2E" rx="2"/>
+<rect x="1420.5" y="478.5" width="15" height="15" fill="#262A2E" rx="2"/>
+<line x1="172" y1="486" x2="1428" y2="486" stroke="#3F6D63" stroke-width="1" opacity="0.25"/>
+<rect x="167.50" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="185.19" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="202.88" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="220.57" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="238.26" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="255.95" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="273.64" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="291.33" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="309.02" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="326.71" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="344.40" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="362.09" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="379.78" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="397.47" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="414.35" y="480.69" width="10.63" height="10.63" rx="1.59" fill="#3F6D63" opacity="1.00"/>
+<rect x="430.41" y="479.06" width="13.88" height="13.88" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="446.47" y="477.43" width="17.13" height="17.13" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="462.54" y="475.81" width="20.39" height="20.39" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="478.60" y="474.18" width="23.64" height="23.64" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="494.66" y="472.55" width="26.90" height="26.90" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="510.73" y="470.93" width="30.15" height="30.15" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="530.04" y="472.55" width="26.90" height="26.90" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="549.36" y="474.18" width="23.64" height="23.64" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="568.68" y="475.81" width="20.39" height="20.39" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="588.00" y="477.43" width="17.13" height="17.13" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="607.31" y="479.06" width="13.88" height="13.88" rx="2.00" fill="#B8792E" opacity="1.00"/>
+<rect x="626.63" y="480.69" width="10.63" height="10.63" rx="1.59" fill="#3F6D63" opacity="1.00"/>
+<rect x="645.13" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="662.82" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="680.51" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="698.20" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="715.89" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="733.58" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="751.27" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="857.42" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="875.11" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="892.80" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="910.49" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="928.18" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="945.87" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="963.56" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="981.25" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="998.94" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1016.63" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1034.32" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1051.33" y="480.82" width="10.35" height="10.35" rx="1.55" fill="#63727C" opacity="0.55"/>
+<rect x="1069.02" y="480.82" width="10.35" height="10.35" rx="1.55" fill="#63727C" opacity="0.55"/>
+<rect x="1080.19" y="474.30" width="23.40" height="23.40" rx="2.00" fill="#63727C" opacity="1.00"/>
+<rect x="1104.40" y="480.82" width="10.35" height="10.35" rx="1.55" fill="#63727C" opacity="0.55"/>
+<rect x="1122.09" y="480.82" width="10.35" height="10.35" rx="1.55" fill="#63727C" opacity="0.55"/>
+<rect x="1140.46" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1158.15" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1175.84" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1193.53" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1211.22" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1228.91" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1246.60" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1264.29" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1281.98" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1299.67" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1317.36" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1335.05" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1352.74" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1370.43" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1388.12" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1405.81" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<rect x="1423.50" y="481.50" width="9.00" height="9.00" rx="1.35" fill="#3F6D63" opacity="1.00"/>
+<circle cx="1091.89" cy="486" r="27" fill="none" stroke="#63727C" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.75"/>
+<rect x="763.74" y="478" width="90.22" height="16" rx="3" fill="none" stroke="#262A2E" stroke-width="1.4" stroke-dasharray="2 5" opacity="0.4"/>
+<circle cx="525.80" cy="428" r="13" fill="#E9E6DC" stroke="#B8792E" stroke-width="1.4"/>
+<text x="525.80" y="433" class="mono" font-size="13" fill="#B8792E" text-anchor="middle">1</text>
+<line x1="525.80" y1="441" x2="525.80" y2="470" stroke="#B8792E" stroke-width="1" opacity="0.5"/>
+<line x1="525.80" y1="500" x2="525.80" y2="518" stroke="#B8792E" stroke-width="1" opacity="0.4"/>
+<text x="525.80" y="532" class="mono" font-size="17" fill="#262A2E" opacity="0.85" text-anchor="middle">gets slower every row</text>
+<circle cx="808.85" cy="428" r="13" fill="#E9E6DC" stroke="#262A2E" stroke-width="1.4"/>
+<text x="808.85" y="433" class="mono" font-size="13" fill="#262A2E" text-anchor="middle">2</text>
+<line x1="808.85" y1="441" x2="808.85" y2="470" stroke="#262A2E" stroke-width="1" opacity="0.5"/>
+<line x1="808.85" y1="500" x2="808.85" y2="518" stroke="#262A2E" stroke-width="1" opacity="0.4"/>
+<text x="808.85" y="532" class="mono" font-size="17" fill="#262A2E" opacity="0.85" text-anchor="middle">not always there yet</text>
+<circle cx="1091.89" cy="428" r="13" fill="#E9E6DC" stroke="#63727C" stroke-width="1.4"/>
+<text x="1091.89" y="433" class="mono" font-size="13" fill="#63727C" text-anchor="middle">3</text>
+<line x1="1091.89" y1="441" x2="1091.89" y2="470" stroke="#63727C" stroke-width="1" opacity="0.5"/>
+<line x1="1091.89" y1="500" x2="1091.89" y2="518" stroke="#63727C" stroke-width="1" opacity="0.4"/>
+<text x="1091.89" y="532" class="mono" font-size="17" fill="#262A2E" opacity="0.85" text-anchor="middle">hangs — never throws</text>
+<line x1="140" y1="602" x2="1460" y2="602" stroke="#262A2E" stroke-width="1" opacity="0.15"/>
+<text x="800.0" y="702" class="serif" font-size="34" font-style="italic" fill="#262A2E" text-anchor="middle">Every fix was the same fix: stop assuming, go check.</text>
+<text x="140" y="814" class="mono" font-size="14" letter-spacing="1.5" fill="#262A2E" opacity="0.42">SNOWFLAKE → OPENPYXL → SHAREPOINT → AIRFLOW</text>
+<rect x="1416" y="788" width="9" height="9" rx="1.5" fill="#3F6D63" opacity="0.55"/>
+<rect x="1429" y="788" width="9" height="9" rx="1.5" fill="#3F6D63" opacity="0.55"/>
+<rect x="1442" y="788" width="9" height="9" rx="1.5" fill="#3F6D63" opacity="0.55"/>
+<rect x="1416" y="801" width="9" height="9" rx="1.5" fill="#3F6D63" opacity="0.55"/>
+<rect x="1429" y="801" width="9" height="9" rx="1.5" fill="#B8792E" opacity="1.0"/>
+<rect x="1442" y="801" width="9" height="9" rx="1.5" fill="#3F6D63" opacity="0.55"/>
+<rect x="1416" y="814" width="9" height="9" rx="1.5" fill="#3F6D63" opacity="0.55"/>
+<rect x="1429" y="814" width="9" height="9" rx="1.5" fill="#3F6D63" opacity="0.55"/>
+<rect x="1442" y="814" width="9" height="9" rx="1.5" fill="#3F6D63" opacity="0.55"/>
+</svg>

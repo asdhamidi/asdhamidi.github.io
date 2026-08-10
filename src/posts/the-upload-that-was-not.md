@@ -7,6 +7,7 @@ description: "Three quiet breaking points in one pipeline, and the pattern that 
 
 # One Cell at a Time: What Building an Artifact Delivery Pipeline Actually Taught Me
 
+![The Same Wall Twice Infographic](/one-cell-at-a-time-infographic.svg)
 _A framework that quietly stopped scaling in three different places - one upload that hung without ever failing, one library that got slower with every cell, and one file that reads its own edits back - and what tying them together revealed about designing for size instead of hoping it never comes up._
 
 ---
