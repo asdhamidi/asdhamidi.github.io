@@ -229,6 +229,10 @@ ul {
     font-weight: 400;
 }
 
+.blog-content h1 {
+    margin: .5rem 0;
+}
+
 .blog-content th{
     font-weight: 500;
 }
@@ -580,7 +584,7 @@ p a:hover svg {
 .work-container,
 .blog-list,
 .blog-page {
-    margin-top: 1rem;
+    margin-top: 0;
 }
 
 .content-title,

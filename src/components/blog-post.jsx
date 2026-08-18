@@ -44,12 +44,6 @@ function BlogPost() {
 
   return (
     <div className="blog-page">
-      {backButton}
-      <p className="blog-title">{post.title}</p>
-      <p className="blog-page-date">
-        <i>{post.date}</i>
-      </p>
-      <hr className="blog-divider" />
       <div className="blog-content">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
