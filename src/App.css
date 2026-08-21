@@ -386,6 +386,7 @@ footer {
     gap: 1.5rem;
 }
 
+
 .work-tab,
 .blog-tab {
     display: flex;
@@ -584,8 +585,13 @@ p a:hover svg {
 .work-container,
 .blog-list,
 .blog-page {
+    margin-top: 0;
+}
+
+.work-container {
     margin-top: 1rem;
 }
+
 
 .content-title,
 .content-title-1 {
@@ -853,7 +859,7 @@ img {
 }
 
 
-.books .section-tagline {
+.now .section-tagline, .books .section-tagline {
     margin: 0;
 }
 
@@ -867,8 +873,8 @@ img {
 }
 
 .books-list {
-    column-count: 2;
-    column-gap: 3.5rem;
+    column-count: 3;
+    column-gap: 1.5rem;
     margin-top: 1rem;
 }
 
@@ -919,4 +925,16 @@ img {
     .book-author {
         font-size: 0.85rem;
     }
+}
+
+/* ── Reading progress bar ── */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--highlight);
+    transition: width 50ms linear;
+    z-index: 100;
+    pointer-events: none;
 }

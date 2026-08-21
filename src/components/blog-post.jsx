@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { getPostBySlug } from "../utils/posts";
@@ -7,6 +7,17 @@ import remarkGfm from 'remark-gfm';
 function BlogPost() {
   const { slug } = useParams();
   const post = getPostBySlug(slug);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.documentElement;
+      const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+      setProgress(isFinite(pct) ? pct : 0);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.title = post ? `${post.title} | asad.` : "post not found | asad.";
@@ -44,6 +55,7 @@ function BlogPost() {
 
   return (
     <div className="blog-page">
+      <div className="reading-progress" style={{ width: `${progress}%` }} />
       <div className="blog-content">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>

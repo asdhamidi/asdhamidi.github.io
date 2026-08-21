@@ -9,6 +9,12 @@ import Works from "./components/works";
 import Blog from "./components/blog";
 import BlogPost from "./components/blog-post";
 import Books from "./components/books";
+import resumePDF from "./assets/Asadullah_Hamidi_Resume.pdf";
+
+function Resume() {
+  useEffect(() => { window.location.href = resumePDF; }, []);
+  return null;
+}
 
 function App() {
   const [theme, setTheme] = useState("☼");
@@ -43,6 +49,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/books" element={<Books />} />
+            <Route path="/resume" element={<Resume />} />
           </Routes>
         </div>
       </div>
