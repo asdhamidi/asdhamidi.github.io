@@ -1,6 +1,6 @@
 ---
 title: "A Case for Plugin-Style Code Architecture"
-date: "2025-08-29"
+date: "2026-08-29"
 slug: "a-case-for-plugin-style-code"
 description: "A case for building one interface over many backends and an honest look at where clean structure alone doesn't hold."
 ---
