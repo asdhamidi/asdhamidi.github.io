@@ -119,7 +119,7 @@ A reasonable middle ground: abstract after you've seen two or three real cases, 
 
 It's tempting to think config sprawl is solved by team discipline, just don't add fields you don't need. In practice, discipline doesn't survive contact with a deadline. Someone needs one more parameter for one more edge case, and the fastest path is bolting it onto the config object rather than touching the code that's supposed to own it. A year in, nobody can say which fields are load-bearing and which are dead weight from a backend nobody uses anymore.
 
-The leak here is structurally the same one from the durability example above: a boundary that isn't enforced eventually gets violated, no matter how well-intentioned the people crossing it are. Frankly, I don't have any solid or robust fix or even an idea for this. I have been the culprit of adding fields to widen the capabilities. I have come to believe that perhaps the most sound, if not the best, way to handle it is to enforce a strict contract - make sure to cover all bases in design to have n columns cover everything - but that asks for a foresight which gets proven wrong under the weight of quick fixes and shortcuts.
+The leak here is structurally the same one from the durability example above: a boundary that isn't enforced eventually gets violated, no matter how well-intentioned the people crossing it are. Frankly, I don't have any solid or robust fix or even an idea for this. I have been the culprit of adding fields to widen the capabilities. I have come to believe that the most sound, albeit not the best, way is to make extension cheap without making the core contract infinitely extensible - but that asks for a foresight which gets proven wrong under the weight of quick fixes and shortcuts.
 
 ### SOLID tells you what good looks like, not how to get there
 
@@ -142,10 +142,11 @@ Old implementers stay untouched; callers that need progress reporting check for 
 ## My mantra developed over the years
 
 - One facade per capability, config-driven, backend-agnostic to the caller.
+- Keep the core contract small, extensible only when absolutely needed.
 - Interface exposes only the true common denominator; specialized behavior lives in the concrete class, never in the facade.
 - Group implementations by genuine structural similarity, not just by "they do roughly the same thing" - and expect to revisit that grouping.
 - Don't hide behavioral differences between backends behind a uniform contract - surface them explicitly where they matter (durability, latency, consistency).
-- Abstract after seeing two or three real cases, not zero - and lean on strict isolation to make an early guess cheap to undo.
+- Abstract after seeing two or three real cases, not zero (not a rule) - and lean on strict isolation to make an early guess cheap to undo.
 - Config and code work well when the contract is solid. Spread it far enough and you land in a world of trouble.
 - Pick a concrete mechanism for interface evolution before you need it - segregated interfaces, default methods, expand-contract, or explicit versioning.
 
