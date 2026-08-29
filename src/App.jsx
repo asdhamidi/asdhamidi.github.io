@@ -21,7 +21,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    fetch("https://blog-api-h1by.vercel.app/visit", { method: "POST" }).catch(() => {});
+    fetch("https://blog-api-h1by.vercel.app/visit", { method: "GET" }).catch(() => {});
   }, []);
 
   useEffect(() => {
