@@ -16,6 +16,7 @@ const About = ({}) => {
         <p>
             At work, I deal with data pipelines, Python frameworks, and lately agentic AI systems, mostly building things that sit a bit outside what standard tooling gives you out of the box. It's uncharted territory with no clear map, and surprises that catch you off-guard.
         </p>
+        <p>Lately I have been fascinated with the internals and architecture of high-scale applications, particularly databases and what enchantments uphold the "magic" we use so casually. I have also been learning Rust these days as bet on the future of the data ecosystem.</p>
         <p>
             Outside of work you'll find me looking at FlightRadar24 after spotting planes overhead, reading the most obscure Wikipedia articles, or simply enjoying my cup of Chai. I also write at <a href="https://thewrongturn.substack.com/" target="_blank" rel="noopener noreferrer">The Wrong Turn<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#777" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a> - equal parts personal essays and overthinking out loud. 
         </p>
