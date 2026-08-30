@@ -23,6 +23,11 @@ function BlogPost() {
     document.title = post ? `${post.title} | asad.` : "post not found | asad.";
   }, [post]);
 
+  // Hit the visit endpoint every time this component mounts or the slug changes
+  useEffect(() => {
+    fetch("https://blog-api-h1by.vercel.app/visit", { method: "GET" }).catch(() => {});
+  }, [slug]);
+
   const backButton = (
     <Link to="/blog" className="blog-page-title">
       <svg
