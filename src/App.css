@@ -614,6 +614,71 @@ p a:hover svg {
     margin-top: 0;
 }
 
+.otw-line {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--highlight);
+    opacity: 0.65;
+}
+
+.otw-dot {
+    display: inline-block;
+    width: 12.5px;
+    height: 12.5px;
+    background: transparent;
+    margin-left: 0.45rem;
+    vertical-align: middle;
+    position: relative;
+    cursor: default;
+    animation: otw-spin 4s linear infinite;
+    transform-origin: center;
+}
+
+.otw-dot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px dashed var(--highlight);
+    animation: otw-glint 2.5s ease-in-out infinite;
+}
+
+@keyframes otw-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes otw-glint {
+    0%, 100% { filter: none; }
+    50% { background: var(--highlight); }
+}
+
+.otw-dot::after {
+    content: "open to work";
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 400;
+    background: var(--highlight);
+    color: var(--text-color-highlight);
+    padding: 0.15em 0.6em;
+    border-radius: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.otw-dot:hover {
+    background-color: transparent;
+}
+.otw-dot:hover::after {
+    opacity: 1;
+
+}
+
 .section-tagline {
     font-size: 1rem;
     margin: 0;
@@ -932,7 +997,7 @@ img {
     }
 }
 
-/* ── Reading progress bar ── */
+/*  Reading progress bar  */
 .reading-progress {
     position: fixed;
     top: 0;

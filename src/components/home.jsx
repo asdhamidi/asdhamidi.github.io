@@ -8,7 +8,9 @@ const Home = ({}) => {
             <img src={asadPic} alt="me" className='home-pic'/>
             <div>
                 <p className="content-title-1">Hey,</p>
-                <p className="content-title-1">I am Asad!</p>
+                <p className="content-title-1">I am Asad!
+                  <span className="otw-dot" aria-label="open to work" />
+                </p>
 
             </div>
           </div>
