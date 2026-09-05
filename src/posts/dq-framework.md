@@ -18,7 +18,7 @@ I designed a config-driven data quality framework for Snowflake after rejecting 
 ## The Background
 I've spent the last several years moving between data engineering projects, professional and private, and one thing has been constant across almost all of them: a data quality framework that everyone tolerates but nobody loves. I've seen the shape this takes over and over. One team's DQ setup had grown to a dozen interlocking config tables, and you needed to have been there for the last three "improvements" to know which one actually controlled whether a check ran. Another team had wired their checks so tightly into dbt that the DQ layer *was* the dbt project - you couldn't run a check without a dbt invocation, and god forbid if the Jinja was incorrect, you couldn't tell if the check failed or the framework. A third had built the whole thing as Snowflake stored procedures, which worked great until the day a migration to a different environment became a real possibility, and someone realized the entire quality layer was non-portable business logic sitting inside `CREATE PROCEDURE` statements that no-one understood. And more than one was simply hard to add a check to - you'd open the config table, stare at eight cryptic columns, and go ask someone on Teams what `CHILD_RULE_ID_4` meant this time.
 
-None of these were built by careless people. They were built by competent engineers <sup>[citation needed]</sup> solving real problems under real deadlines, and each one optimized for something reasonable - flexibility, dbt-native testing, warehouse-native performance - and paid for it somewhere else. That's really what this whole exercise was: not "let me build the correct DQ framework," because I don't think that exists, but "let me be honest about the trade-offs and pick the ones I can live with." Everything below - the schema, the engine, the choices I walked back mid-design - comes out of trying to solve those specific, lived pains, not out of a belief that this is *the* answer. Someone else with different scars would build this differently, and reasonably so.
+None of these were built by careless people. They were built by competent engineers _[citation needed]_ solving real problems under real deadlines, and each one optimized for something reasonable - flexibility, dbt-native testing, warehouse-native performance - and paid for it somewhere else. That's really what this whole exercise was: not "let me build the correct DQ framework," because I don't think that exists, but "let me be honest about the trade-offs and pick the ones I can live with." Everything below - the schema, the engine, the choices I walked back mid-design - comes out of trying to solve those specific, lived pains, not out of a belief that this is *the* answer. Someone else with different scars would build this differently, and reasonably so.
 
 This post walks through the data model and the engine as they ended up, but more importantly, through the road *not* taken at each step - because the discarded options are where most of the actual reasoning lives.
 
@@ -45,11 +45,10 @@ The framework rests on three tables: `DQ_CHECK_CONFIG` (what to check), `DQ_RESU
 
 The instinct almost everyone reaches for first - including me - is: different check types need different fields, so store the differences in a flexible JSON blob and keep the table narrow.
 
-```
-CHECK_ID | CHECK_TYPE | TABLE | COLUMN | PARAMETERS                     | THRESHOLD
-101      | RANGE      | ORDERS| AMOUNT | {"min": 0, "max": 100000}      | 0.01
-102      | OUTLIER    | ORDERS| AMOUNT | {"sigma": 3}                   | 0.01
-```
+| CHECK_ID | CHECK_TYPE | TABLE  | COLUMN | PARAMETERS                    | THRESHOLD |
+|----------|------------|--------|--------|-------------------------------|-----------|
+| 101      | RANGE      | ORDERS | AMOUNT | `{"min": 0, "max": 100000}`   | 0.01      |
+| 102      | OUTLIER    | ORDERS | AMOUNT | `{"sigma": 3}`                | 0.01      |
 
 This is genuinely flexible - you can add a check type without touching the schema. It's also exactly the failure mode I'd lived through before: to add a RANGE check, you need to already know the key is `min`/`max` and not `lower`/`upper` or `minimum`. That knowledge lives nowhere the schema can tell you. `DESCRIBE TABLE` shows you one column, `VARIANT`, and nothing else. This is principle #1 and #3 failing simultaneously - the schema stopped being able to teach anyone anything, and every new check author needed tribal knowledge to fill in a row correctly. I discarded this almost immediately, because it was the exact shape of the frameworks I'd already been burned by.
 
@@ -69,10 +68,9 @@ This looked elegant on paper and cut the column count way down. But it reintrodu
 
 The final shape keeps Attempt 2's explicitness but fixes its ergonomics with one structural change: **a single config row targets one table+column, and can activate *multiple* check families at once**, each through its own named fields.
 
-```
-CHECK_ID | TABLE  | COLUMN        | NULL_CHECK_ACTIVE | LOWER_BOUND | UPPER_BOUND | RANGE_THRESHOLD | OUTLIER_SENSITIVITY | OUTLIER_THRESHOLD | CRITICALITY
-203      | ORDERS | ORDER_AMOUNT  | TRUE               | 0           | 100000      | 1.0%            | 3                    | 1.0%               | WARN
-```
+| CHECK_ID | TABLE  | COLUMN       | NULL_CHECK_ACTIVE | LOWER_BOUND | UPPER_BOUND | RANGE_THRESHOLD | OUTLIER_SENSITIVITY | OUTLIER_THRESHOLD | CRITICALITY |
+|----------|--------|--------------|-------------------|-------------|-------------|-----------------|---------------------|-------------------|-------------|
+| 203      | ORDERS | ORDER_AMOUNT | TRUE              | 0           | 100000      | 1.0%            | 3                   | 1.0%              | WARN        |
 
 One row, three checks (NULL, RANGE, OUTLIER) fired off it. This is still explicit - every populated column name tells you exactly what it configures - but it avoids the sparsity explosion of pure Attempt 2 for the common case of "several related checks on the same column," which is genuinely how people think about data quality: *this column shouldn't be null, should be in this range, and shouldn't have wild outliers* is one mental unit, not three unrelated config entries.
 
@@ -88,12 +86,8 @@ Beyond the check-family columns, every row also carries: `CHECK_STATUS` (`DRAFT`
 
 Every check type - no matter how different its SQL - evaluates to the same result row:
 
-```
-RUN_ID | CHECK_ID | CHECK_TYPE | STATUS | TOTAL_ROWS | FAILED_ROWS | FAIL_PCT
-     | THRESHOLD_TYPE | THRESHOLD_VALUE | PASS_FAIL_FLAG | CRITICALITY
-     | CHECK_STATUS_AT_RUN | RENDERED_SQL | SAMPLE_FAILED_KEYS | ERROR_MESSAGE
-     | EXECUTION_TIME_MS | EXECUTED_AT
-```
+| RUN_ID | CHECK_ID | CHECK_TYPE | STATUS | TOTAL_ROWS | FAILED_ROWS | FAIL_PCT | THRESHOLD_TYPE | THRESHOLD_VALUE | PASS_FAIL_FLAG | CRITICALITY | CHECK_STATUS_AT_RUN | RENDERED_SQL | SAMPLE_FAILED_KEYS | ERROR_MESSAGE | EXECUTION_TIME_MS | EXECUTED_AT |
+|--------|----------|------------|--------|------------|-------------|----------|----------------|-----------------|----------------|-------------|---------------------|--------------|--------------------|---------------|-------------------|-------------|
 
 Two design choices here matter more than they look:
 
@@ -119,36 +113,50 @@ The engine is Python, using the Snowflake connector, structured around ports-and
 ### The workflow, end to end
 
 Before getting into why each piece is shaped the way it is, here's what actually happens on a real run against Snowflake - no mock session, no CSV fallback, the full path from CLI invocation to the two log tables:
+1. CLI starts with one of: `--check-id`, `--table`, `--schedule-group`, or `--run-all`.
 
-```mermaid
-flowchart TD
-    A["CLI: main.py --check-id / --table / --schedule-group / --run-all"] --> B["SnowflakeConfigLoader<br/>SELECT * FROM DQ_CHECK_CONFIG<br/>WHERE CHECK_STATUS IN ('ACTIVE','SHADOW') AND &lt;filter&gt;"]
-    B --> C["registry.resolve_check_instances()<br/>explodes each config row into one CheckInstance<br/>per active check family"]
-    C --> D["ThreadPoolExecutor(max_workers)<br/>submits one task per CheckInstance"]
-    D --> E["CHECK_REGISTRY[check_type] dispatch"]
+2. SnowflakeConfigLoader loads configurations from `DQ_CHECK_CONFIG` where status is `ACTIVE` or `SHADOW`, applying the requested filter.
 
-    subgraph PerCheck ["Per CheckInstance - runs concurrently, one thread-local Snowflake session each"]
-        direction TB
-        E --> F["Check function renders SQL<br/>from DEFAULT_TEMPLATES"]
-        F --> G["SnowflakeSession.execute()"]
-        G --> H{"Query raised<br/>an exception?"}
-        H -- no --> I["compute_fail_pct + evaluate_pass_fail<br/>CheckResult(STATUS=SUCCESS)"]
-        H -- yes --> J["CheckExecutionError caught by driver<br/>CheckResult(STATUS=ERROR)"]
-    end
+3. Resolve Check Instances — each configuration row is expanded into one `CheckInstance` for each active check family.
 
-    I --> K["Collect all CheckResults (as_completed)"]
-    J --> K
+4. Run Checks Concurrently using `ThreadPoolExecutor`, with one task submitted per `CheckInstance`.
 
-    K --> L{"Any result STATUS=SUCCESS<br/>and PASS_FAIL_FLAG=FAIL?"}
-    L -- yes --> M["RecordFetcher.fetch_failed_records()<br/>only for failing checks with a DETAIL template<br/>+ ROW_IDENTIFIER_COLUMNS configured"]
-    L -- no --> N["skip detail fetch"]
-    M --> O["SnowflakeResultLogger.log_results()<br/>one batched INSERT into DQ_RESULTS"]
-    N --> O
+5. Dispatch Check using `CHECK_REGISTRY[check_type]`.
 
-    O --> P["Build RunSummary<br/>attempted / passed / failed / errored"]
-    P --> Q["SnowflakeResultLogger.log_run_summary()<br/>INSERT into DQ_RUN_LOG"]
-    Q --> R["Return RunSummary to CLI"]
-```
+6. Render SQL from `DEFAULT_TEMPLATES`.
+
+7. Execute SQL using a thread-local `SnowflakeSession`.
+
+8. Check for execution error:
+
+   * If no error → calculate failure percentage → evaluate pass/fail → create `CheckResult(STATUS=SUCCESS)`.
+   * If error → catch `CheckExecutionError` → create `CheckResult(STATUS=ERROR)`.
+
+9. Collect all CheckResults as each concurrent task completes.
+
+10. Check whether any check failed:
+
+    * If `STATUS=SUCCESS` and `PASS_FAIL_FLAG=FAIL` → fetch failed records.
+    * Otherwise → skip detail fetching.
+
+11. Fetch Failed Records only when the failing check has:
+
+    * a `DETAIL` template, and
+    * `ROW_IDENTIFIER_COLUMNS` configured.
+
+12. Log Results with one batched `INSERT` into `DQ_RESULTS`.
+
+13. Build RunSummary containing:
+
+    * attempted
+    * passed
+    * failed
+    * errored
+
+14. Log Run Summary with an `INSERT` into `DQ_RUN_LOG`.
+
+15. Return RunSummary back to the CLI.
+
 
 A few things worth noticing in this shape that don't come through in prose as clearly: the config query itself is the only place `CHECK_STATUS` gets filtered - once a check is loaded, `SHADOW` and `ACTIVE` are treated identically all the way through (the distinction only matters to a downstream alerting layer that isn't built yet). The detail-fetch branch only exists at all if at least one check actually failed - on an all-green run, that whole box is skipped. And there's exactly one write to `DQ_RESULTS` and one write to `DQ_RUN_LOG` per run, both batched, regardless of whether the run covered one check or two hundred.
 
