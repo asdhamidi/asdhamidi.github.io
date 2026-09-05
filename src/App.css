@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Code:wght@300..700&family=Sintony:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
 :root {
     --highlight: rgb(138, 43, 226);
     --text-color-highlight: #fff;
@@ -239,8 +241,9 @@ ul {
 }
 
 .blog-content th{
-    font-weight: 500;
+    text-align: left;
 }
+
 
 .blog-content td {
     font-weight: 300;
@@ -426,6 +429,7 @@ footer {
     margin: 0;
     font-size: 1.25rem;
 }
+
 
 .blog-info p {
     margin: 0.1rem 0;

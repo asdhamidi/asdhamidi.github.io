@@ -45,10 +45,14 @@ The framework rests on three tables: `DQ_CHECK_CONFIG` (what to check), `DQ_RESU
 
 The instinct almost everyone reaches for first - including me - is: different check types need different fields, so store the differences in a flexible JSON blob and keep the table narrow.
 
-| CHECK_ID | CHECK_TYPE | TABLE  | COLUMN | PARAMETERS                    | THRESHOLD |
-|----------|------------|--------|--------|-------------------------------|-----------|
-| 101      | RANGE      | ORDERS | AMOUNT | `{"min": 0, "max": 100000}`   | 0.01      |
-| 102      | OUTLIER    | ORDERS | AMOUNT | `{"sigma": 3}`                | 0.01      |
+```
+CHECK_ID: 101
+CHECK_TYPE: RANGE
+TABLE: ORDERS
+COLUMN: AMOUNT
+PARAMETERS: {"min": 0, "max": 100000}
+THRESHOLD: 0.01
+```
 
 This is genuinely flexible - you can add a check type without touching the schema. It's also exactly the failure mode I'd lived through before: to add a RANGE check, you need to already know the key is `min`/`max` and not `lower`/`upper` or `minimum`. That knowledge lives nowhere the schema can tell you. `DESCRIBE TABLE` shows you one column, `VARIANT`, and nothing else. This is principle #1 and #3 failing simultaneously - the schema stopped being able to teach anyone anything, and every new check author needed tribal knowledge to fill in a row correctly. I discarded this almost immediately, because it was the exact shape of the frameworks I'd already been burned by.
 
@@ -68,9 +72,18 @@ This looked elegant on paper and cut the column count way down. But it reintrodu
 
 The final shape keeps Attempt 2's explicitness but fixes its ergonomics with one structural change: **a single config row targets one table+column, and can activate *multiple* check families at once**, each through its own named fields.
 
-| CHECK_ID | TABLE  | COLUMN       | NULL_CHECK_ACTIVE | LOWER_BOUND | UPPER_BOUND | RANGE_THRESHOLD | OUTLIER_SENSITIVITY | OUTLIER_THRESHOLD | CRITICALITY |
-|----------|--------|--------------|-------------------|-------------|-------------|-----------------|---------------------|-------------------|-------------|
-| 203      | ORDERS | ORDER_AMOUNT | TRUE              | 0           | 100000      | 1.0%            | 3                   | 1.0%              | WARN        |
+```
+CHECK_ID: 203
+TABLE: ORDERS
+COLUMN: ORDER_AMOUNT
+NULL_CHECK_ACTIVE: TRUE
+LOWER_BOUND:  0
+UPPER_BOUND: 100000
+RANGE_THRESHOLD: 1.0%
+OUTLIER_SENSITIVITY: 3
+OUTLIER_THRESHOLD: 1.0%
+CRITICALITY: WARN
+```
 
 One row, three checks (NULL, RANGE, OUTLIER) fired off it. This is still explicit - every populated column name tells you exactly what it configures - but it avoids the sparsity explosion of pure Attempt 2 for the common case of "several related checks on the same column," which is genuinely how people think about data quality: *this column shouldn't be null, should be in this range, and shouldn't have wild outliers* is one mental unit, not three unrelated config entries.
 
@@ -85,9 +98,25 @@ Beyond the check-family columns, every row also carries: `CHECK_STATUS` (`DRAFT`
 ### DQ_RESULTS: one shape for everything
 
 Every check type - no matter how different its SQL - evaluates to the same result row:
-
-| RUN_ID | CHECK_ID | CHECK_TYPE | STATUS | TOTAL_ROWS | FAILED_ROWS | FAIL_PCT | THRESHOLD_TYPE | THRESHOLD_VALUE | PASS_FAIL_FLAG | CRITICALITY | CHECK_STATUS_AT_RUN | RENDERED_SQL | SAMPLE_FAILED_KEYS | ERROR_MESSAGE | EXECUTION_TIME_MS | EXECUTED_AT |
-|--------|----------|------------|--------|------------|-------------|----------|----------------|-----------------|----------------|-------------|---------------------|--------------|--------------------|---------------|-------------------|-------------|
+```
+RUN_ID: <run_id>
+CHECK_ID: <check_id>
+CHECK_TYPE: <check_type>
+STATUS: <status>
+TOTAL_ROWS: <total_rows>
+FAILED_ROWS: <failed_rows>
+FAIL_PCT: <fail_pct>
+THRESHOLD_TYPE: <threshold_type>
+THRESHOLD_VALUE: <threshold_value>
+PASS_FAIL_FLAG: <pass_fail_flag>
+CRITICALITY: <criticality>
+CHECK_STATUS_AT_RUN: <check_status_at_run>
+RENDERED_SQL: <rendered_sql>
+SAMPLE_FAILED_KEYS: <sample_failed_keys>
+ERROR_MESSAGE: <error_message>
+EXECUTION_TIME_MS: <execution_time_ms>
+EXECUTED_AT: <executed_at>
+```
 
 Two design choices here matter more than they look:
 
@@ -133,9 +162,7 @@ Before getting into why each piece is shaped the way it is, here's what actually
    * If error → catch `CheckExecutionError` → create `CheckResult(STATUS=ERROR)`.
 
 9. Collect all CheckResults as each concurrent task completes.
-
 10. Check whether any check failed:
-
     * If `STATUS=SUCCESS` and `PASS_FAIL_FLAG=FAIL` → fetch failed records.
     * Otherwise → skip detail fetching.
 
