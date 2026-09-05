@@ -17,6 +17,10 @@ const Footer = ({}) => {
         <a className="link" href="https://www.linkedin.com/in/asadullah-hamidi/">
             linkedin
         </a>
+        •
+        <a className="link" href="https://lichess.org/@/UranKhatola">
+            chess
+        </a>
         /
         <a className="link resume-footer-link" href={resumePDF} download="Asadullah_Hamidi_Resume.pdf">
             [résumé]
