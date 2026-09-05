@@ -260,6 +260,14 @@ ul {
     color: var(--text-color);
     text-decoration: none;
 }
+.blog-content a::before {
+    content: "[";
+    color: var(--highlight);
+}
+.blog-content a::after {
+    color: var(--highlight);
+    content: "]";
+}
 
 .blog-link-text {
     text-decoration: underline;
@@ -278,6 +286,7 @@ ul {
 
 .blog-content a:hover {
     color: var(--highlight);
+    
     text-decoration: none;
 }
 
@@ -375,6 +384,7 @@ footer {
 
 .content-container p a {
     display: inline-flex;
+        transition: transform 200ms ease;
 }
 
 .content-container p {
