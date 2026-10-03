@@ -44,27 +44,23 @@ rows = agg.collect()                                                 # (6)
 
 ## Two processes, one script
 
-```
-Python Process
-  ↓
-Your Script
-  ↓
-SparkSession (Proxy)
-  ↓
-Py4J Socket (127.0.0.1)
-  ↓
-Py4J Server
-  ↓
-Driver JVM
-  ↓
-SparkContext (Real)
-  ↓
-Catalyst + Scheduler + Spark UI
-```
+**Python process**
 
-Everything you think of as "Spark" lives on the right. Everything on the left is a thin Python layer holding *references* to things on the right. Keep that word in mind.
+- Your script
+- `SparkSession` (a proxy)
+- `DataFrame` (a proxy)
 
-Py4J lets Python call Java objects in a separate JVM, and Java call back into Python. It is **not JNI**. The two sides are separate OS processes talking over a local TCP socket with a small text protocol. That buys isolation (a JVM crash can't segfault your interpreter) and costs serialization and latency on every call. And one limitation shapes everything that follows: **Py4J carries instructions, not bulk data.**
+**↕ Py4J socket on `127.0.0.1`**: short text commands go one way, replies and tickets come back.
+
+**Driver JVM**
+
+- Py4J server
+- `SparkContext` (the real one)
+- Catalyst, the scheduler and the Spark UI
+
+Everything you think of as "Spark" lives in the JVM. Everything in the Python process is a thin layer holding *references* to things in the JVM. Keep that word in mind.
+
+Py4J lets Python call Java objects living in a separate JVM, and lets Java call back into Python. It is **not JNI**. The two sides are separate OS processes that talk over a local TCP socket using a small text protocol. That buys isolation (a JVM crash can't segfault your interpreter) and costs serialization and latency on every call. And one limitation shapes everything that follows: **Py4J carries instructions, not bulk data.**
 
 ## Two ways to start PySpark
 
