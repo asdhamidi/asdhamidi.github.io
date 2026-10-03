@@ -80,11 +80,58 @@ Each stage ends with a short "Where we are," so you can always tell how far alon
 
 **Stage 1 of 7.** Before there's any phone line, someone has to build the kitchen. In a plain script, that someone is your own code. `getOrCreate()` starts a chain that ends in a function called `launch_gateway`:
 
+<<<<<<< HEAD
 ```
 getOrCreate()  ->  SparkContext.__init__  ->  _ensure_initialized()  ->  launch_gateway()
 ```
 
 Nothing launches at `import pyspark`. The JVM starts at the first call that actually needs it. And `launch_gateway` starts it with a plain `Popen`, straight from the 4.2.0 source:
+=======
+**Python process**
+
+- Your script
+- `SparkSession` (a proxy)
+- `DataFrame` (a proxy)
+
+**↕ Py4J socket on `127.0.0.1`**: short text commands go one way, replies and tickets come back.
+
+**Driver JVM**
+
+- Py4J server
+- `SparkContext` (the real one)
+- Catalyst, the scheduler and the Spark UI
+
+Everything you think of as "Spark" lives in the JVM. Everything in the Python process is a thin layer holding *references* to things in the JVM. Keep that word in mind.
+
+Py4J lets Python call Java objects living in a separate JVM, and lets Java call back into Python. It is **not JNI**. The two sides are separate OS processes that talk over a local TCP socket using a small text protocol. That buys isolation (a JVM crash can't segfault your interpreter) and costs serialization and latency on every call. And one limitation shapes everything that follows: **Py4J carries instructions, not bulk data.**
+
+## Two ways to start PySpark
+
+Before the bridge exists, one process has to start the other. There are two routes.
+
+| | Python-first | JVM-first |
+|---|---|---|
+| How you run it | `python app.py`, notebooks, the `pyspark` shell | `spark-submit app.py` |
+| Who starts first | Python | the JVM |
+| Who launches the other | `launch_gateway()` runs `spark-submit pyspark-shell` | `PythonRunner` launches Python as a child |
+| How Python learns port and secret | a connection file written by the JVM | environment variables |
+| Handshake file and stdin pipe | yes | no |
+
+`spark-submit app.py` is the usual production route: it sets driver and executor options before the JVM starts and handles cluster modes. `SparkSubmit` sees a `.py` file and makes `PythonRunner` the main class, which (simplified):
+
+```scala
+val gatewayServer = new Py4JServer(sparkConf)
+// started on a thread named "py4j-gateway-init"; wait for it so the port is known
+
+env.put("PYSPARK_GATEWAY_PORT", "" + gatewayServer.getListeningPort)
+env.put("PYSPARK_GATEWAY_SECRET", gatewayServer.secret)
+
+// launch `python app.py` as a child, forward its output, wait for it to exit,
+// then shut the gateway down
+```
+
+On the Python side, `launch_gateway` begins by checking whether someone already did all that:
+>>>>>>> refs/remotes/origin/main
 
 ```python
 popen_kwargs["stdin"] = PIPE
