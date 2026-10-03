@@ -208,6 +208,10 @@ ul {
     margin: 0.5rem 0;
 }
 
+.blog-page {
+    font-family: "Sofia Sans", serif;
+}
+
 .blog-content ul {
     list-style: disc;
 }
