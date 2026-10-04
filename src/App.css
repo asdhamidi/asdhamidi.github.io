@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Code:wght@300..700&family=Sintony:wght@400;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&display=swap');
 
 :root {
     --highlight: rgb(138, 43, 226);
@@ -39,16 +40,45 @@
 .dark .links a svg {
     fill: white;
 }
-
 .blog-content pre {
-    background-color: var(--code-color);
-    padding: 0.75rem;
-    font-weight: 300;
-    border-radius: 0.5rem;
-    font-family: monospace;
-    overflow-x: auto;
-    scrollbar-width: none;
-    max-width: 100%;
+  position: relative;
+  padding: 1rem 0.75rem;
+  font-size: 1rem;
+  color: var(--text-color-light);
+  border: 1px solid var(--border-color);   /* the one that went missing */
+  font-weight: 300;
+  border-radius: 0.5rem;
+  font-family: "Google Sans Code", monospace;
+  overflow: visible;                        /* was overflow-x: auto */
+  max-width: 100%;
+  transition: all ease-in-out 100ms;
+}
+
+.blog-content pre:hover {
+  border-color: var(--highlight);
+}
+
+.blog-content pre code {
+  display: block;
+  overflow-x: auto;
+  scrollbar-width: none;
+  font-size: inherit;
+}
+
+.blog-content pre::before {
+  content: "code";
+  position: absolute;
+  top: 0;
+  left: 0.9rem;
+  transform: translateY(-50%);
+  padding: 0.1rem 0.25rem;
+  line-height: 1;
+  font-size: 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  letter-spacing: 0.08em;
+  color: var(--text-color-light);
+  background: var(--text-color-highlight);              /* must match your page background */
 }
 
 .dark .links a svg:hover {
@@ -88,6 +118,10 @@ li {
     margin: 0.25rem;
     user-select: none;
     width: 100%;
+}
+
+table {
+    table-layout: fixed;
 }
 
 li:first-child {
@@ -220,9 +254,6 @@ ul {
     list-style: decimal;
 }
 
-.blog-content code {
-    font-family: 'Sofia Sans';
-}
 
 .blog-content li,
 .blog-content li:first-child {
@@ -257,7 +288,50 @@ ul {
     border-left: 0.25rem solid var(--highlight);
     padding-left: 1rem;
     margin: 1rem 0;
+    font-family: "Sofia Sans", serif;
     color: var(--text-color-light);
+}
+
+.blog-content p code, .blog-content ol li code, .blog-content li code, .blog-content ol code, .blog-content ul code, .blog-content ul li  code{
+    font-family: "Google Sans Code", monospace;
+    font-size: 0.95rem;
+    background-color: var(--code-color);
+    border-radius: 0.25rem;
+}
+
+.blog-content table td{
+    border-radius: 0.5rem;
+
+}
+.blog-content table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.blog-content thead, .blog-content thead tr th, .blog-content thead tr th code {
+    font-weight: 600;
+}
+
+.blog-content table th code, .blog-content table th code , .blog-content table td code {
+    font-weight: 300;
+    text-decoration: none;
+    font-family: "Sofia Sans", serif;
+    padding: 0.25rem;
+}
+
+
+.blog-content table th,  .blog-content table td, .blog-content table tr{
+    border: 1px solid var(--border-color);
+    font-family: "Sofia Sans", serif;
+    padding: 0.25rem;
+    font-weight: 300;
+}
+
+
+
+.blog-content table code {
+    border: none;
+    font-size: inherit;
 }
 
 .blog-content a {
@@ -860,6 +934,7 @@ img {
 
     .content-container {
         padding: 1rem;
+        font-size: 1rem;
         box-sizing: border-box;
         padding: 0 1.5rem;
         padding-top: 0;
